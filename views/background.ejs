@@ -1,0 +1,272 @@
+<%- include('partials/tracker.ejs'); -%>
+
+<div class="broader">
+    <div id="myProgress">
+        <div id="myBar">10%</div>
+      </div>
+</div>
+
+<div class="form-holder">
+    <form action="/submit" method="post" enctype="multipart/form-data" id="uploadForm">
+        <div class="form-container">
+            <section class="checkbox-section">
+                <div class="checkbox-row">
+                    <div>
+                        <input type="checkbox" id="prayed1" name="question1_prayed" value="1" required>
+                        <label for="prayed1">Did you pray?</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="10q_checkbox" name="10q_checkbox" value="1" required>
+                        <label for="10q_checkbox">10 Q's for the past year:</label>
+                        <input type="file" id="10q_upload" name="10q_upload[]" multiple>
+                        
+                    </div>
+                </div>
+                <div class="checkbox-row">
+                    <div>
+                        <input type="checkbox" id="10k_checkbox" name="10k_checkbox" value="1" required>
+                        <label for="10k_checkbox">10 K's for the past 5 years:</label>
+                        <input type="file" id="10k_upload" name="10k_upload[]" multiple>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="proxies_checkbox" name="proxies_checkbox" value="1" required>
+                        <label for="proxies_checkbox">Proxies:</label>
+                        <input type="file" id="proxies_upload" name="proxies_upload[]" multiple>
+                    </div>
+                </div>
+                <div class="checkbox-row">
+                    <div>
+                        <input type="checkbox" id="press_releases_checkbox" name="press_releases_checkbox" value="1" required>
+                        <label for="press_releases_checkbox">Press releases:</label>
+                        <input type="file" id="press_releases_upload" name="press_releases_upload[]" multiple>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="court_documents_checkbox" name="court_documents_checkbox" value="1" required>
+                        <label for="court_documents_checkbox">Court Documents:</label>
+                        <input type="file" id="court_documents_upload" name="court_documents_upload[]" multiple>
+                    </div>
+                </div>
+                <div class="checkbox-row">
+                    <div>
+                        <input type="checkbox" id="real_estate_records_checkbox" name="real_estate_records_checkbox" value="1" required>
+                        <label for="real_estate_records_checkbox">Real Estate records:</label>
+                        <input type="file" id="real_estate_records_upload" name="real_estate_records_upload[]" multiple>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="industry_publications_checkbox" name="industry_publications_checkbox" value="1" required>
+                        <label for="industry_publications_checkbox">Industry Publications:</label>
+                        <input type="file" id="industry_publications_upload" name="industry_publications_upload[]" multiple>
+                    </div>
+                </div>
+                <div class="checkbox-row">
+                    <div>
+                        <input type="checkbox" id="sell_side_research_checkbox" name="sell_side_research_checkbox" value="1" required>
+                        <label for="sell_side_research_checkbox">Sell-side research:</label>
+                        <input type="file" id="sell_side_research_upload" name="sell_side_research_upload[]" multiple>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="court_cases_checkbox" name="court_cases_checkbox" value="1" required>
+                        <label for="court_cases_checkbox">Court cases:</label>
+                        <input type="file" id="court_cases_upload" name="court_cases_upload[]" multiple>
+                    </div>
+                </div>
+            </section>
+            
+
+            <section class="checkbox-section">
+                <div class="form-group">
+                    <label for="business_model_canvas_question">Business Model Canvas:</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="business_model_canvas_positive" name="business_model_canvas_question" value="5" required>
+                            <label for="business_model_canvas_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="business_model_canvas_negative" name="business_model_canvas_question" value="-5" required>
+                            <label for="business_model_canvas_negative">Negative</label>
+                        </div>
+                        <input type="file" id="business_model_canvas_document" name="business_model_canvas_document[]" multiple>
+                    </div>
+                    <textarea id="business_model_canvas_comment" name="business_model_canvas_comment" placeholder="" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="bcg_matrix_question">BCG Matrix:</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="bcg_matrix_positive" name="bcg_matrix_question" value="5" required>
+                            <label for="bcg_matrix_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="bcg_matrix_negative" name="bcg_matrix_question" value="-5" required>
+                            <label for="bcg_matrix_negative">Negative</label>
+                        </div>
+                        <input type="file" id="bcg_matrix_document" name="bcg_matrix_document[]" multiple>
+                    </div>
+                    <textarea id="bcg_matrix_comment" name="bcg_matrix_comment" placeholder="" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="pestel_analysis_question">PESTEL Analysis:</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="pestel_analysis_positive" name="pestel_analysis_question" value="5" required>
+                            <label for="pestel_analysis_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="pestel_analysis_negative" name="pestel_analysis_question" value="-5" required>
+                            <label for="pestel_analysis_negative">Negative</label>
+                        </div>
+                        <input type="file" id="pestel_analysis_document" name="pestel_analysis_document[]" multiple>
+                    </div>
+                    <textarea id="pestel_analysis_comment" name="pestel_analysis_comment" placeholder="" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="porters_five_forces_question">Porter's Five Forces:</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="porters_five_forces_positive" name="porters_five_forces_question" value="5" required>
+                            <label for="porters_five_forces_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="porters_five_forces_negative" name="porters_five_forces_question" value="-5" required>
+                            <label for="porters_five_forces_negative">Negative</label>
+                        </div>
+                        <input type="file" id="porters_five_forces_document" name="porters_five_forces_document[]" multiple>
+                    </div>
+                    <textarea id="porters_five_forces_comment" name="porters_five_forces_comment" placeholder="" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="swot_analysis_question">SWOT Analysis:</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="swot_analysis_positive" name="swot_analysis_question" value="5" required>
+                            <label for="swot_analysis_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="swot_analysis_negative" name="swot_analysis_question" value="-5" required>
+                            <label for="swot_analysis_negative">Negative</label>
+                        </div>
+                        <input type="file" id="swot_analysis_document" name="swot_analysis_document" multiple>
+                    </div>
+                    <textarea id="swot_analysis_comment" name="swot_analysis_comment[]" placeholder="" required></textarea>
+                </div>
+            </section>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<script>
+
+    var i = 0;
+function move() {
+  if (i === 0) {
+    i = 1;
+    var elem = document.getElementById("myBar");
+    elem.style.width = "0%"; // Ensure initial width is set
+
+    fetch('/get-progress') // Replace '/get-progress' with your server endpoint
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json(); // Assuming your server sends JSON
+      })
+      .then(data => {
+        var width = data.progress; // Assuming your JSON has a 'progress' property
+        if (width >= 0 && width <= 100) { // Validate the width
+          elem.style.width = width + "%";
+          elem.innerHTML = width + "%";
+        } else {
+          console.error("Invalid progress value from server:", width);
+        }
+      })
+      .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+      });
+  }
+}
+
+    // Automatically start the progress bar when the page loads
+    window.onload = function() {
+        move();
+    };
+
+//Confirm submission
+
+// Disable the back button
+history.pushState(null, null, location.href);
+window.onpopstate = function () {
+    history.pushState(null, null, location.href);
+};
+// Add event listener to the form to trigger confirmation
+document.getElementById('uploadForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                // Get all file input elements
+                const fileInputs = document.querySelectorAll('input[type="file"]');
+                let confirmationMessage = "Please confirm the files you have selected:\n\n";
+                let totalSize = 0;
+                const maxSize = 100 * 1024 * 1024; // 100MB in bytes
+
+                let hasFiles = false; // Track if any files were selected
+
+                // Iterate over each file input
+                fileInputs.forEach(input => {
+                    if (input.files && input.files.length > 0) {
+                        hasFiles = true;
+                        confirmationMessage += `${input.id}:\n`;
+                        for (let i = 0; i < input.files.length; i++) {
+                            const file = input.files[i];
+                            totalSize += file.size;
+                            // Get file size in KB or MB
+                            const fileSizeKB = file.size / 1024; // Size in KB
+                            let fileSizeDisplay;
+                            if (fileSizeKB > 1024) {
+                                fileSizeDisplay = (fileSizeKB / 1024).toFixed(2) + " MB"; // Size in MB
+                            } else {
+                                fileSizeDisplay = fileSizeKB.toFixed(2) + " KB"; // Size in KB
+                            }
+                            confirmationMessage += `  - ${file.name} (${fileSizeDisplay})\n`;
+                        }
+                        confirmationMessage += "\n";
+                    }
+                });
+
+                //convert totalSize to MB
+                const totalSizeMB = (totalSize / (1024 * 1024)).toFixed(2);
+
+                confirmationMessage = `Total upload size: ${totalSizeMB} MB / 100 MB\n\n${confirmationMessage}`;
+
+
+                // If no files were selected, show a message and allow submission
+                if (!hasFiles) {
+                    alert("No files were selected for upload.  Submitting form.");
+                    this.submit(); // Use 'this' to refer to the form
+                    return;
+                }
+
+                if (totalSize > maxSize) {
+                    alert(`Total upload size (${totalSizeMB} MB) exceeds the limit of 100 MB. Please reduce the number of files.`);
+                    return;
+                }
+
+                // Show the confirmation dialog
+                const userConfirmed = confirm(confirmationMessage);
+
+                // If the user confirms, submit the form
+                if (userConfirmed) {
+                    this.submit(); // Use 'this' to refer to the form
+                } else {
+                    alert("File upload cancelled.");
+                    // Optionally, you can reset the form or clear the file inputs here
+                }
+            });
+        
+    
+        
+
+</script>

@@ -1,0 +1,10 @@
+uploads/
+node_modules/
+package-lock.json
+.env
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

@@ -1,0 +1,520 @@
+html {
+  background-color: #e4e9fd;
+  background-image: -webkit-linear-gradient(65deg, #00bf63 1%, #ffffff 99%);
+  min-height: 100vh;
+  font-family: "Arial";
+}
+button.add {
+  position: absolute;
+  bottom: 0%;
+  right: 6%;
+  min-height: 5%;
+  width: 5%;
+  border-radius: 50%;
+  border-color: transparent;
+  background-color: #00bf63;
+  color: #fff;
+  font-size: 4vw;
+  border-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s;
+  animation: flicker 5s infinite;
+}
+
+@keyframes flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+.logo a {
+  font-family: Arial, sans-serif;
+  color: white;
+  text-decoration: none;
+  font-size: 24px; /* Adjust the font size as needed */
+}
+
+button.add:hover {
+  transform: scale(1.1);
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  min-height: 100vh;
+  min-width: 95vw; /* Changed from 95vh to 100vw */
+  margin: 0;
+}
+main {
+  text-align: center;
+  flex: 1 0 auto;
+}
+h1 {
+  color: #fff;
+  padding: 10px;
+}
+
+.box {
+  max-width: 90%;
+  margin: 5% auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 5% 5% 15% -5% rgba(0, 0, 0, 0.3);
+  height: 80vh; /* Changed to 100vh to match the height of the body */
+  overflow-y: scroll; max-height: 80vh;
+}
+
+#heading {
+  background-color: #00bf63;
+  text-align: center;
+  height: 100%;
+}
+form.edit {
+  display: flex;
+}
+
+.item {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.item:last-child {
+  border-bottom: 0;
+}
+
+input[type="checkbox"] {
+  margin: 2%;
+  margin-left: 0;
+}
+
+#holding-label{
+margin: 0;
+}
+
+.date-labels {
+  margin: 0;
+  font-size: 1vw;
+  color: #00bf63;
+  padding-left: 0.5%;
+  text-align: left;
+}
+
+.project-info {
+  margin: 0;
+  font-size: 1.0vw;
+  color: black;
+  text-align: left;
+}
+
+form {
+  text-align: center;
+  margin-left: 2%;
+}
+
+button.edit {
+  margin-left: 0px;
+  margin-right: 2%;
+  border: none;
+  background: none;
+}
+
+.icon {
+  height: 2.5vh; /* Set to 2.5% of the viewport height */
+}
+
+input[type="text"] {
+  text-align: left;
+  height: 60px;
+  top: 10px;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  font-weight: 200;
+  width: 80%;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  box-shadow: inset 0 -3px 0 0 black;
+}
+
+::placeholder {
+  color: lightgray;
+  opacity: 1;
+}
+
+footer {
+  flex: 0 0 auto;
+  color: white;
+  text-align: center;
+}
+
+tr {
+  text-align: left;
+  border-bottom: 0.3px dotted #bbb8b8;
+  padding: 15px 0; /* Increased padding to make rows larger */
+  transition: background-color 0.3s, color 0.3s;
+  padding-left: 10px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table td {
+  margin: 0;
+  font-size: 20px;
+  color: black;
+  padding: 15px 10px; /* Added padding to increase row height */
+}
+
+table td,
+table th {
+  border: none;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+table th:nth-child(2),
+table td:nth-child(2) {
+  width: 40%;
+  padding-left: 10px;
+}
+
+table th:nth-child(3),
+table td:nth-child(4) {
+  width: 12%;
+}
+
+table th:nth-child(5),
+table td:nth-child(6),
+table td:nth-child(7) {
+  width: 8%;
+}
+
+
+tr:hover {
+  background-color: #00bf63;
+  color: #fff;
+}
+
+tr:hover td {
+  color: #fff;
+}
+
+th {
+  background-color: #00bf63;
+  color: #fff;
+  font-size: 20px;
+}
+
+/* Header styles */
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #00bf63;
+      color: white;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .header .logo {
+      font-size: 1.0em;
+      font-weight: bold;
+    }
+    .header nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+    .header nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* New EJS Designs */
+
+    body {
+        font-family: Arial;
+        color: #00bf63;
+        background-color: #f5f5f7;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+      max-width: 90%;
+      margin: 10px auto; /* Centered the container */
+      padding: 20px;
+    }
+
+    h2 {
+        font-size: 2em;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #00bf63;
+    }
+
+    .form-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px; /* Increased to create more space between the rows */
+      gap: 30px; /* Added to create space between the roles */
+    }
+
+  
+  ::placeholder {
+    color: black;
+    opacity: 0.5;
+  }
+  
+    .form-group {
+      flex: 1;
+
+    }
+
+    .form-group:last-child {
+      margin-right: 0;
+    }
+
+
+    textarea {
+      width: 100%;
+      padding: 2px;
+      font-size: 1em;
+      border: 1px solid #d2d2d7;
+      border-radius: 4px;
+      box-sizing: border-box;
+      background-color: #fff;
+      color:black; /* Changed to black */
+      height: 150%;
+      padding-left: 5px;
+      font-family: Arial;
+    }
+
+
+    input[type="text"], input[type="number"], input[type="email"], input[type="password"], input[type="tel"], input[type="url"], input[type="search"], input[type="date"], input[type="time"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="color"] {
+      width: 100%;
+      padding: 2px;
+      font-size: 1em;
+      border: 1px solid #d2d2d7;
+      border-radius: 4px;
+      box-sizing: border-box;
+      background-color: #fff;
+      color: black; /* Changed to black */
+      height: 150%;
+      padding-left: 5px;
+      font-family: Arial;
+    }
+
+    select {
+      font-family: Arial;
+      color: black;
+    }
+
+    input:focus {
+      border-color: #00bf63;
+      outline: none;
+      box-shadow: 0 0 0 1px #00bf63;
+    }
+
+    .btn-primary {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 1em;
+        font-weight: 600;
+        color: #fff;
+        background-color: #00bf63;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .btn-primary:hover {
+        background-color: white;
+        color: #00bf63;
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 1em;
+      font-weight: 600;
+      color: #fff;
+      background-color: #f02815;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+  }
+
+  .btn-secondary:hover {
+      background-color: white;
+      color: #f02815;
+  }
+
+/* tracker styles */
+
+.tracker-sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 10px 20px;
+  background-color: #dcf9eb;
+  color: rgb(0, 0, 0);
+  width: 250px; /* Adjust the width as needed */
+  height: calc(100vh - 38px); /* Adjust height to not overlap with header */
+  position: fixed;
+  left: 0;
+  top: 38px; /* Adjust top to start below the header */
+  box-sizing: border-box;
+}
+.project-info-container {
+  display: flex;
+  flex-direction: column; /* Change to column to stack items vertically */
+  gap: 20px; /* Keep the gap for spacing between items */
+}
+
+.project-header{
+  margin: 0;
+  font-size: 25px;
+  color: #00bf63;
+  text-align: left; 
+}
+.center {
+  text-align: center;
+}
+
+.centerid {
+  text-align: center;
+}
+
+#myChart {
+  width: 400px;
+  height: 400px;
+  margin-left: 700px;
+  margin-top: 50px;
+}
+
+.broader {
+  margin-left: 245px; /* Adjust the margin to avoid clashing with the tracker sidebar */
+}
+
+#myBar {
+  width: 10%;
+  height: 30px;
+  background-color: #13a1f4;
+  text-align: center; /* To center it horizontally (if you want) */
+  line-height: 30px; /* To center it vertically */
+  color: white;
+}
+
+
+
+.form-holder {
+  margin-left: 17%;
+  max-width: calc(100%-17%); /* Ensure it doesn't exceed the viewport width */
+  display: flex;
+  flex-direction: column; /* Ensure the list goes down */
+  justify-content: left;
+  align-items: left;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+textarea {
+  resize: vertical;
+}
+
+
+label {
+  color: black;
+}
+
+input[type="file"] {
+  color: black;
+}
+
+.checkbox-section {
+display: flex;
+flex-direction: column;
+border: 2px solid #ccc;
+border-radius: 10px;
+padding: 15px;
+margin: 20px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+overflow-x: hidden; /* Add horizontal scrolling if content overflows */
+max-width: 100%; /* Ensure it doesn't exceed the screen width */
+}
+.checkbox-row {
+display: flex;
+justify-content: flex-start; /* Align items to the left */
+height: 40px; /* Adjust the height to make the row smaller */
+}
+.checkbox-row > div {
+flex: 1;
+}
+body {
+  overflow-x: hidden;
+}
+
+/* Custom tooltip styles */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: rgba(55, 65, 81, 1);  /* Tailwind gray-800 */
+  color: #fff;
+  text-align: center;
+  border-radius: 0.375rem; /* Tailwind rounded-md */
+  padding: 0.5rem;           /* Tailwind px-2 py-1 */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -100px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* filter*/
+.filter-container {
+  margin-bottom: 15px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.filter-container label {
+  font-weight: bold;
+}
+
+.filter-container input[type=text],
+.filter-container select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}

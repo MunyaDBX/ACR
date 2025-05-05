@@ -1,0 +1,126 @@
+<%- include('partials/header.ejs'); -%>
+<div class="box">
+  <div class="filter-container">
+    <label for="filter-project">Filter Project:</label>
+    <input type="text" id="filter-project" onkeyup="filterTable()" placeholder="Search for projects...">
+
+    <label for="filter-creator">Filter Creator:</label>
+    <input type="text" id="filter-creator" onkeyup="filterTable()" placeholder="Search for creators...">
+
+    <label for="filter-status">Filter Status:</label>
+    <select id="filter-status" onchange="filterTable()">
+      <option value="">All Statuses</option>
+      <option value="Purchased">Purchased</option>
+      <option value="Decision">Decision</option>
+      <option value="Assessment">Assessment</option>
+    </select>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th class="center">ID</th>
+        <th>Project</th>
+        <th class="center">Creator</th>
+        <th class="center">Date</th>
+        <th class="center">Checklist</th>
+        <th class="center">Score</th>
+        <th class="center">Status</th>
+      </tr>
+    </thead>
+    <tbody id="companyTableBody">
+      <% if (companies && companies.length > 0) { %>
+        <% companies.forEach(company => { %>
+        
+            <td class="centerid"><%= company.c_id %></td>
+            <td class="projectName"><%= company.c_name %></td>
+            <td class="center creatorName"><%= company.c_creator %></td>
+            <td class="center dateValue">
+              <% if (company.c_datem) { %>
+                <%
+                  const dateOptions = {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric'
+                  };
+                %>
+                <% if (typeof company.c_datem === 'string') { %>
+                  <%= new Date(company.c_datem).toLocaleDateString('en-GB', dateOptions) %>
+                <% } else if (company.c_datem instanceof Date) { %>
+                  <%= company.c_datem.toLocaleDateString('en-GB', dateOptions) %>
+                <% } else if (typeof company.c_datem === 'number') { %>
+                  <%= new Date(company.c_datem).toLocaleDateString('en-GB', dateOptions) %>
+                <% } else { %>
+                  Invalid Date
+                <% } %>
+              <% } else { %>
+                N/A
+              <% } %>
+            </td>
+            <td class="center"><%= company.c_comp %>%</td>
+            <td class="center"><%= company.c_score %>%</td>
+            <td class="center statusValue"><%= company.c_status %></td>
+          </tr>
+        <% }); %>
+      <% } else { %>
+        <tr><td colspan="7">No companies found.</td></tr>
+      <% } %>
+    </tbody>
+  </table>
+  <form class="add-button" action="/add" method="post">
+    <button class="add" type="submit">+</button>
+  </form>
+
+
+</div>
+
+<script>
+function filterTable() {
+  const projectInput = document.getElementById("filter-project").value.toUpperCase();
+  const creatorInput = document.getElementById("filter-creator").value.toUpperCase();
+  const statusSelect = document.getElementById("filter-status");
+  const selectedStatus = statusSelect.value.toUpperCase();
+  const table = document.getElementById("companyTableBody");
+  const rows = table.getElementsByTagName("tr");
+
+  for (let i = 0; i < rows.length; i++) {
+    const projectTd = rows[i].querySelector(".projectName");
+    const creatorTd = rows[i].querySelector(".creatorName");
+    const statusTd = rows[i].querySelector(".statusValue");
+    if (projectTd && creatorTd && statusTd) {
+      const projectText = projectTd.textContent.toUpperCase();
+      const creatorText = creatorTd.textContent.toUpperCase();
+      const statusText = statusTd.textContent.toUpperCase();
+      const projectMatch = projectText.includes(projectInput);
+      const creatorMatch = creatorText.includes(creatorInput);
+      const statusMatch = selectedStatus === "" || statusText === selectedStatus;
+      if (projectMatch && creatorMatch && statusMatch) {
+        rows[i].style.display = "";
+      } else {
+        rows[i].style.display = "none";
+      }
+    }
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const rows = document.querySelectorAll("#companyTableBody tr");
+  rows.forEach(row => {
+    row.addEventListener("click", () => {
+      const companyId = row.querySelector("td.centerid").textContent;
+      const form = document.createElement("form");
+      form.method = "post";
+      form.action = "/continue";
+      const input = document.createElement("input");
+      input.type = "hidden";
+      input.name = "companyId";
+      input.value = companyId;
+      form.appendChild(input);
+      document.body.appendChild(form);
+      form.submit();
+    });
+  });
+});
+</script>
+
+
+<%- include('partials/footer.ejs'); -%>

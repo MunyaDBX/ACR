@@ -1,0 +1,436 @@
+<%- include('partials/tracker.ejs'); -%>
+
+<div class="broader">
+    <div id="myProgress">
+        <div id="myBar">20%</div>
+      </div>
+</div>
+
+<div class="form-holder">
+    <form action="/submit-utf1" method="post" enctype="multipart/form-data" id="uploadForm">
+        <div class="form-container">
+            <h2>Understanding the Finances 1</h2>
+            <section class="checkbox-section">
+                <div class="form-group">
+                    <label for="asset_value_attractive">1. Is the asset value of the business attractive in relation to competitors?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="asset_value_positive" name="asset_value_attractive" value="1" required>
+                            <label for="asset_value_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="asset_value_negative" name="asset_value_attractive" value="-1" required>
+                            <label for="asset_value_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="asset_value_na" name="asset_value_attractive" value="0" required>
+                            <label for="asset_value_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="asset_value_attractive_comment" name="asset_value_attractive_comment" placeholder="Explain your assessment of the asset value relative to competitors." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="capex_sales">2. What is the CAPEX/Sales of the company?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="capex_sales_positive" name="capex_sales" value="3" required>
+                            <label for="capex_sales_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="capex_sales_negative" name="capex_sales" value="-3" required>
+                            <label for="capex_sales_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="capex_sales_na" name="capex_sales" value="0" required>
+                            <label for="capex_sales_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="capex_sales_comment" name="capex_sales_comment" placeholder="Provide the CAPEX/Sales and CAPEX/Operational Cash Flow ratios and compare them with industry standards. Ideal CAPEX/Operational Cash Flow &lt; 15%" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="fcf_margin">3. Is the FCF margin of a company at least 15% (and preferably more than 20%)?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="fcf_margin_positive" name="fcf_margin" value="1" required>
+                            <label for="fcf_margin_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="fcf_margin_negative" name="fcf_margin" value="-1" required>
+                            <label for="fcf_margin_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="fcf_margin_na" name="fcf_margin" value="0" required>
+                            <label for="fcf_margin_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="fcf_margin_comment" name="fcf_margin_comment" placeholder="Provide the FCF margin and the percentage of earnings converted into free cash flow.Furthermore, a high percentage (&gt; 90%) of the companies’ earnings should be converted into free cash flow." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="sales_estimation">4. Estimating sales into the future, what factors are you going to consider and how will those factors fare?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="sales_estimation_positive" name="sales_estimation" value="1" required>
+                            <label for="sales_estimation_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="sales_estimation_negative" name="sales_estimation" value="-1" required>
+                            <label for="sales_estimation_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="sales_estimation_na" name="sales_estimation" value="0" required>
+                            <label for="sales_estimation_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="sales_estimation_comment" name="sales_estimation_comment" placeholder="Describe the factors you will consider and your estimation of future sales and how you expect them to move." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="earnings_nav">5. Is earnings power greater than Net Asset Value?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="earnings_nav_positive" name="earnings_nav" value="1" required>
+                            <label for="earnings_nav_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="earnings_nav_negative" name="earnings_nav" value="-1" required>
+                            <label for="earnings_nav_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="earnings_nav_na" name="earnings_nav" value="0" required>
+                            <label for="earnings_nav_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="earnings_nav_comment" name="earnings_nav_comment" placeholder="Compare earnings power with Net Asset Value." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="eps_growth">6. Is the annualized earnings(EPS) growth rate over the past 10 Years greater than 15%?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="eps_growth_positive" name="eps_growth" value="3" required>
+                            <label for="eps_growth_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="eps_growth_negative" name="eps_growth" value="-3" required>
+                            <label for="eps_growth_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="eps_growth_na" name="eps_growth" value="0" required>
+                            <label for="eps_growth_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="eps_growth_comment" name="eps_growth_comment" placeholder="Provide the annualized EPS growth rate over the past 10 years." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="owner_earnings_growth">7. Is the annualized owner earnings growth rate greater than 10% for the past 10 Years?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="owner_earnings_growth_positive" name="owner_earnings_growth" value="3" required>
+                            <label for="owner_earnings_growth_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="owner_earnings_growth_negative" name="owner_earnings_growth" value="-3" required>
+                            <label for="owner_earnings_growth_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="owner_earnings_growth_na" name="owner_earnings_growth" value="0" required>
+                            <label for="owner_earnings_growth_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="owner_earnings_growth_comment" name="owner_earnings_growth_comment" placeholder="Provide the annualized owner earnings growth rate over the past 10 years." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="fcf_growth">8. Is the annualized free cashflow growth rate greater than 10% for the past 10 years?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="fcf_growth_positive" name="fcf_growth" value="3" required>
+                            <label for="fcf_growth_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="fcf_growth_negative" name="fcf_growth" value="-3" required>
+                            <label for="fcf_growth_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="fcf_growth_na" name="fcf_growth" value="0" required>
+                            <label for="fcf_growth_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="fcf_growth_comment" name="fcf_growth_comment" placeholder="Provide the annualized free cashflow growth rate over the past 10 years." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="debt_equity">9. Is debt of the business less than 20% of the debt to equity ratio.</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="debt_equity_positive" name="debt_equity" value="2" required>
+                            <label for="debt_equity_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="debt_equity_negative" name="debt_equity" value="-2" required>
+                            <label for="debt_equity_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="debt_equity_na" name="debt_equity" value="0" required>
+                            <label for="debt_equity_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="debt_equity_comment" name="debt_equity_comment" placeholder="Provide the debt to equity ratio and assess if the debt is less than 20%." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="financial_strength">10. Is the Financial Strength Ranking above 7?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="financial_strength_positive" name="financial_strength" value="1" required>
+                            <label for="financial_strength_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="financial_strength_negative" name="financial_strength" value="-1" required>
+                            <label for="financial_strength_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="financial_strength_na" name="financial_strength" value="0" required>
+                            <label for="financial_strength_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="financial_strength_comment" name="financial_strength_comment" placeholder="Provide the Financial Strength Ranking as per gurufocus.com" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="roic">11. Is the average ROIC over the past 10 years greater than 8%?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="roic_positive" name="roic" value="3" required>
+                            <label for="roic_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="roic_negative" name="roic" value="-3" required>
+                            <label for="roic_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="roic_na" name="roic" value="0" required>
+                            <label for="roic_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="roic_comment" name="roic_comment" placeholder="Provide the average ROIC over the past 10 years." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="roa">12. Is the average ROA over the past 10 years greater than 8%?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="roa_positive" name="roa" value="3" required>
+                            <label for="roa_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="roa_negative" name="roa" value="-3" required>
+                            <label for="roa_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="roa_na" name="roa" value="0" required>
+                            <label for="roa_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="roa_comment" name="roa_comment" placeholder="Provide the average ROA over the past 10 years." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="roe">13. Is the average ROE over the past 10 years greater than 15%?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="roe_positive" name="roe" value="2" required>
+                            <label for="roe_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="roe_negative" name="roe" value="-2" required>
+                            <label for="roe_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="roe_na" name="roe" value="0" required>
+                            <label for="roe_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="roe_comment" name="roe_comment" placeholder="Provide the average ROE over the past 10 years." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="piotroski_score">14. Is Piotroski Score above 7?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="piotroski_score_positive" name="piotroski_score" value="1" required>
+                            <label for="piotroski_score_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="piotroski_score_negative" name="piotroski_score" value="-1" required>
+                            <label for="piotroski_score_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="piotroski_score_na" name="piotroski_score" value="0" required>
+                            <label for="piotroski_score_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="piotroski_score_comment" name="piotroski_score_comment" placeholder="Provide the Piotroski Score as per gurufocus.com" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="consistency">15. Is the entity consistent over the past 25 Years?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="consistency_positive" name="consistency" value="2" required>
+                            <label for="consistency_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="consistency_negative" name="consistency" value="-2" required>
+                            <label for="consistency_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="consistency_na" name="consistency" value="0" required>
+                            <label for="consistency_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="consistency_comment" name="consistency_comment" placeholder="Describe the entity's consistency over the past 25 years." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="inventory_receivable">16. Is inventory and receivable growing slower than the business's overall sales growth?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="inventory_receivable_positive" name="inventory_receivable" value="1" required>
+                            <label for="inventory_receivable_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="inventory_receivable_negative" name="inventory_receivable" value="-1" required>
+                            <label for="inventory_receivable_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="inventory_receivable_na" name="inventory_receivable" value="0" required>
+                            <label for="inventory_receivable_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="inventory_receivable_comment" name="inventory_receivable_comment" placeholder="Compare the growth rate of inventory and receivables with the overall sales growth." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="utf1_documents">Documents:</label>
+  
+                        <input type="file" id="utf1_documents" name="utf1_documents[]" multiple>
+                        
+            </section>
+        </div>
+        <button type="submit" class="btn btn-primary">Save and Move to Next Page</button>
+    </form>
+  </div>
+  
+  <script>
+  // Disable the back button
+history.pushState(null, null, location.href);
+window.onpopstate = function () {
+    history.pushState(null, null, location.href);
+};
+    var i = 0;
+  function move() {
+  if (i === 0) {
+    i = 1;
+    var elem = document.getElementById("myBar");
+    elem.style.width = "0%"; // Ensure initial width is set
+  
+    fetch('/get-progress') // Replace '/get-progress' with your server endpoint
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json(); // Assuming your server sends JSON
+      })
+      .then(data => {
+        var width = data.progress; // Assuming your JSON has a 'progress' property
+        if (width >= 0 && width <= 100) { // Validate the width
+          elem.style.width = width + "%";
+          elem.innerHTML = width + "%";
+        } else {
+          console.error("Invalid progress value from server:", width);
+        }
+      })
+      .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+      });
+  }
+  }
+  
+    // Automatically start the progress bar when the page loads
+    window.onload = function() {
+        move();
+    };
+  
+  //Confirm submission
+  
+  // Add event listener to the form to trigger confirmation
+  document.getElementById('uploadForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+  
+                // Get all file input elements
+                const fileInputs = document.querySelectorAll('input[type="file"]');
+                let confirmationMessage = "Please confirm the files you have selected:\n\n";
+                let totalSize = 0;
+                const maxSize = 100 * 1024 * 1024; // 100MB in bytes
+  
+                let hasFiles = false; // Track if any files were selected
+  
+                // Iterate over each file input
+                fileInputs.forEach(input => {
+                    if (input.files && input.files.length > 0) {
+                        hasFiles = true;
+                        confirmationMessage += `${input.id}:\n`;
+                        for (let i = 0; i < input.files.length; i++) {
+                            const file = input.files[i];
+                            totalSize += file.size;
+                            // Get file size in KB or MB
+                            const fileSizeKB = file.size / 1024; // Size in KB
+                            let fileSizeDisplay;
+                            if (fileSizeKB > 1024) {
+                                fileSizeDisplay = (fileSizeKB / 1024).toFixed(2) + " MB"; // Size in MB
+                            } else {
+                                fileSizeDisplay = fileSizeKB.toFixed(2) + " KB"; // Size in KB
+                            }
+                            confirmationMessage += `  - ${file.name} (${fileSizeDisplay})\n`;
+                        }
+                        confirmationMessage += "\n";
+                    }
+                });
+  
+                //convert totalSize to MB
+                const totalSizeMB = (totalSize / (1024 * 1024)).toFixed(2);
+  
+                confirmationMessage = `Total upload size: ${totalSizeMB} MB / 100 MB\n\n${confirmationMessage}`;
+  
+  
+                // If no files were selected, show a message and allow submission
+                if (!hasFiles) {
+                    alert("No files were selected for upload.  Submitting form.");
+                    this.submit(); // Use 'this' to refer to the form
+                    return;
+                }
+  
+                if (totalSize > maxSize) {
+                    alert(`Total upload size (${totalSizeMB} MB) exceeds the limit of 100 MB. Please reduce the number of files.`);
+                    return;
+                }
+  
+                // Show the confirmation dialog
+                const userConfirmed = confirm(confirmationMessage);
+  
+                // If the user confirms, submit the form
+                if (userConfirmed) {
+                    this.submit(); // Use 'this' to refer to the form
+                } else {
+                    alert("File upload cancelled.");
+                    // Optionally, you can reset the form or clear the file inputs here
+                }
+            });
+  
+  </script>
+  

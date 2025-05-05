@@ -1,0 +1,651 @@
+<%- include('partials/tracker.ejs'); -%>
+
+<div class="broader">
+    <div id="myProgress">
+        <div id="myBar">20%</div>
+      </div>
+</div>
+
+<div class="form-holder">
+    <form action="/submit-utb1" method="post" enctype="multipart/form-data" id="uploadForm">
+        <div class="form-container">
+            <h2>Understanding the business 1</h2>
+
+            <section class="checkbox-section">
+                <div class="form-group">
+                    <label for="reinvestment_opportunity_question">1. Are there reinvestment opportunities for capital in the business:</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="reinvestment_opportunity_positive" name="reinvestment_opportunity_question" value="3" required>
+                            <label for="reinvestment_opportunity_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="reinvestment_opportunity_canvas_negative" name="reinvestment_opportunity_question" value="-3" required>
+                            <label for="reinvestment_opportunity_negative">Negative</label>
+                        </div>
+                         <div>
+                            <input type="radio" id="reinvestment_opportunity_canvas_na" name="reinvestment_opportunity_question" value="0" required>
+                            <label for="reinvestment_opportunity_canvas_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="reinvestment_opportunity_comment" name="reinvestment_opportunity_comment" placeholder="" required></textarea>
+                </div>
+            
+                <div class="form-group">
+                    <label for="competitive_advantage_question">2. Does the business have a solid competitive advantage:</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="competitive_advantage_positive" name="competitive_advantage_question" value="2" required>
+                            <label for="competitive_advantage_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="competitive_advantage_negative" name="competitive_advantage_question" value="-2" required>
+                            <label for="competitive_advantage_negative">Negative</label>
+                        </div>
+                         <div>
+                            <input type="radio" id="competitive_advantage_na" name="competitive_advantage_question" value="0" required>
+                            <label for="competitive_advantage_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="competitive_advantage_comment" name="competitive_advantage_comment" placeholder="" required></textarea>
+                </div>
+            
+                <div class="form-group">
+                    <label for="market_share_question">3. Is the business market share significant in relation to competitors:</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="market_share_positive" name="market_share_question" value="1" required>
+                            <label for="market_share_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="market_share_negative" name="market_share_question" value="-1" required>
+                            <label for="market_share_negative">Negative</label>
+                        </div>
+                         <div>
+                            <input type="radio" id="market_share_na" name="market_share_question" value="0" required>
+                            <label for="market_share_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="market_share_comment" name="market_share_comment" placeholder="" required></textarea>
+                </div>
+            
+                <div class="form-group">
+                    <label for="inflation_proof_question">4. Is the product inflation proof and can the business raise prices:</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="inflation_proof_positive" name="inflation_proof_question" value="3" required>
+                            <label for="inflation_proof_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="inflation_proof_negative" name="inflation_proof_question" value="-3" required>
+                            <label for="inflation_proof_negative">Negative</label>
+                        </div>
+                         <div>
+                            <input type="radio" id="inflation_proof_na" name="inflation_proof_question" value="0" required>
+                            <label for="inflation_proof_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="inflation_proof_comment" name="inflation_proof_comment" placeholder="" required></textarea>
+                </div>
+            
+                <div class="form-group">
+                    <label for="imminent_factors_question">5. Are there any imminent factors that can kill the business:</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="imminent_factors_positive" name="imminent_factors_question" value="3" required>
+                            <label for="imminent_factors_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="imminent_factors_negative" name="imminent_factors_question" value="-3" required>
+                            <label for="imminent_factors_negative">Negative</label>
+                        </div>
+                         <div>
+                            <input type="radio" id="imminent_factors_na" name="imminent_factors_question" value="0" required>
+                            <label for="imminent_factors_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="imminent_factors_comment" name="imminent_factors_comment" placeholder="" required></textarea>
+                </div>
+            
+                <div class="form-group">
+                    <label for="cost_structure_question">6. Does the business have a complicated cost structure:</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="cost_structure_positive" name="cost_structure_question" value="1" required>
+                            <label for="cost_structure_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="cost_structure_negative" name="cost_structure_question" value="-1" required>
+                            <label for="cost_structure_negative">Negative</label>
+                        </div>
+                         <div>
+                            <input type="radio" id="cost_structure_na" name="cost_structure_question" value="0" required>
+                            <label for="cost_structure_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="cost_structure_comment" name="cost_structure_comment" placeholder="" required></textarea>
+                </div>
+            
+                <div class="form-group">
+                    <label for="shrinking_markets_question">7. Are the company’s end markets shrinking and susceptible to rapid changes?:</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="shrinking_markets_positive" name="shrinking_markets_question" value="3" required>
+                            <label for="shrinking_markets_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="shrinking_markets_negative" name="shrinking_markets_question" value="-3" required>
+                            <label for="shrinking_markets_negative">Negative</label>
+                        </div>
+                         <div>
+                            <input type="radio" id="shrinking_markets_na" name="shrinking_markets_question" value="0" required>
+                            <label for="shrinking_markets_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="shrinking_markets_comment" name="shrinking_markets_comment" placeholder="" required></textarea>
+                </div>
+            
+                <div class="form-group">
+                    <label for="market_perceptions_question">8. Are market perceptions of the business solid?:</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="market_perceptions_positive" name="market_perceptions_question" value="1" required>
+                            <label for="market_perceptions_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="market_perceptions_negative" name="market_perceptions_question" value="-1" required>
+                            <label for="market_perceptions_negative">Negative</label>
+                        </div>
+                         <div>
+                            <input type="radio" id="market_perceptions_na" name="market_perceptions_question" value="0" required>
+                            <label for="market_perceptions_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="market_perceptions_comment" name="market_perceptions_comment" placeholder="" required></textarea>
+                </div>
+            
+                <div class="form-group">
+                    <label for="operating_history_question">9. Does the business have a consistent operating history?:</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="operating_history_positive" name="operating_history_question" value="1" required>
+                            <label for="operating_history_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="operating_history_negative" name="operating_history_question" value="-1" required>
+                            <label for="operating_history_negative">Negative</label>
+                        </div>
+                         <div>
+                            <input type="radio" id="operating_history_na" name="operating_history_question" value="0" required>
+                            <label for="operating_history_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="operating_history_comment" name="operating_history_comment" placeholder="" required></textarea>
+                </div>
+            
+                <div class="form-group">
+                    <label for="long_term_prospects_question">10. Does the business have favorable long term prospects, WHY?:</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="long_term_prospects_positive" name="long_term_prospects_question" value="1" required>
+                            <label for="long_term_prospects_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="long_term_prospects_negative" name="long_term_prospects_question" value="-1" required>
+                            <label for="long_term_prospects_negative">Negative</label>
+                        </div>
+                         <div>
+                            <input type="radio" id="long_term_prospects_na" name="long_term_prospects_question" value="0" required>
+                            <label for="long_term_prospects_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="long_term_prospects_comment" name="long_term_prospects_comment" placeholder="" required></textarea>
+                </div>
+            
+                <div class="form-group">
+                    <label for="understandable_business_question">11. Is the business simple and understandable?:</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="understandable_business_positive" name="understandable_business_question" value="2" required>
+                            <label for="understandable_business_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="understandable_business_negative" name="understandable_business_question" value="-2" required>
+                            <label for="understandable_business_negative">Negative</label>
+                        </div>
+                         <div>
+                            <input type="radio" id="understandable_business_na" name="understandable_business_question" value="0" required>
+                            <label for="understandable_business_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="understandable_business_comment" name="understandable_business_comment" placeholder="" required></textarea>
+                </div>
+            
+                <div class="form-group">
+                    <label for="evaluatable_characteristics_question">12. Can the long term characteristics of the business be evaluated easily?:</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="evaluatable_characteristics_positive" name="evaluatable_characteristics_question" value="1" required>
+                            <label for="evaluatable_characteristics_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="evaluatable_characteristics_negative" name="evaluatable_characteristics_question" value="-1" required>
+                            <label for="evaluatable_characteristics_negative">Negative</label>
+                        </div>
+                         <div>
+                            <input type="radio" id="evaluatable_characteristics_na" name="evaluatable_characteristics_question" value="0" required>
+                            <label for="evaluatable_characteristics_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="evaluatable_characteristics_comment" name="evaluatable_characteristics_comment" placeholder="" required></textarea>
+                </div>
+            
+                <div class="form-group">
+                    <label for="market_potential_question">13. Does the company have products or services with sufficient market potential to make possible a sizable increase in sales for at least several years?:</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="market_potential_positive" name="market_potential_question" value="1" required>
+                            <label for="market_potential_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="market_potential_negative" name="market_potential_question" value="-1" required>
+                            <label for="market_potential_negative">Negative</label>
+                        </div>
+                         <div>
+                            <input type="radio" id="market_potential_na" name="market_potential_question" value="0" required>
+                            <label for="market_potential_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="market_potential_comment" name="market_potential_comment" placeholder="" required></textarea>
+                </div>
+            
+                <div class="form-group">
+                    <label for="research_development_question">14. How effective are the company's research-and-development efforts in relation to its size?:</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="research_development_positive" name="research_development_question" value="3" required>
+                            <label for="research_development_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="research_development_negative" name="research_development_question" value="-3" required>
+                            <label for="research_development_negative">Negative</label>
+                        </div>
+                         <div>
+                            <input type="radio" id="research_development_na" name="research_development_question" value="0" required>
+                            <label for="research_development_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="research_development_comment" name="research_development_comment" placeholder="" required></textarea>
+                </div>
+            
+                <div class="form-group">
+                    <label for="sales_organization_question">15. Does the company have an above-average sales organization?:</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="sales_organization_positive" name="sales_organization_question" value="1" required>
+                            <label for="sales_organization_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="sales_organization_negative" name="sales_organization_question" value="-1" required>
+                            <label for="sales_organization_negative">Negative</label>
+                        </div>
+                         <div>
+                            <input type="radio" id="sales_organization_na" name="sales_organization_question" value="0" required>
+                            <label for="sales_organization_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="sales_organization_comment" name="sales_organization_comment" placeholder="" required></textarea>
+                </div>
+            
+                <div class="form-group">
+                    <label for="labor_relations_question">16. Does the company have outstanding labor and personnel relations?:</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="labor_relations_positive" name="labor_relations_question" value="1" required>
+                            <label for="labor_relations_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="labor_relations_negative" name="labor_relations_question" value="-1" required>
+                            <label for="labor_relations_negative">Negative</label>
+                        </div>
+                         <div>
+                            <input type="radio" id="labor_relations_na" name="labor_relations_question" value="0" required>
+                            <label for="labor_relations_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="labor_relations_comment" name="labor_relations_comment" placeholder="" required></textarea>
+                </div>
+            
+                <div class="form-group">
+                    <label for="executive_relations_question">17. Does the company have outstanding executive relations?:</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="executive_relations_positive" name="executive_relations_question" value="1" required>
+                            <label for="executive_relations_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="executive_relations_negative" name="executive_relations_question" value="-1" required>
+                            <label for="executive_relations_negative">Negative</label>
+                        </div>
+                         <div>
+                            <input type="radio" id="executive_relations_na" name="executive_relations_question" value="0" required>
+                            <label for="executive_relations_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="executive_relations_comment" name="executive_relations_comment" placeholder="" required></textarea>
+                </div>
+            
+                <div class="form-group">
+                    <label for="industry_peculiarities_question">18. Are there other aspects of the business, somewhat peculiar to the industry involved, which will give the investor important clues as to how outstanding the company may be in relation to its competition?:</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="industry_peculiarities_positive" name="industry_peculiarities_question" value="1" required>
+                            <label for="industry_peculiarities_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="industry_peculiarities_negative" name="industry_peculiarities_question" value="-1" required>
+                            <label for="industry_peculiarities_negative">Negative</label>
+                        </div>
+                         <div>
+                            <input type="radio" id="industry_peculiarities_na" name="industry_peculiarities_question" value="0" required>
+                            <label for="industry_peculiarities_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="industry_peculiarities_comment" name="industry_peculiarities_comment" placeholder="" required></textarea>
+                </div>
+            
+                <div class="form-group">
+                    <label for="profit_outlook_question">19. Does the company have a short-range or long-range outlook in regard to profits?:</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="profit_outlook_positive" name="profit_outlook_question" value="1" required>
+                            <label for="profit_outlook_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="profit_outlook_negative" name="profit_outlook_question" value="-1" required>
+                            <label for="profit_outlook_negative">Negative</label>
+                        </div>
+                         <div>
+                            <input type="radio" id="profit_outlook_na" name="profit_outlook_question" value="0" required>
+                            <label for="profit_outlook_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="profit_outlook_comment" name="profit_outlook_comment" placeholder="" required></textarea>
+                </div>
+            
+                <div class="form-group">
+                    <label for="fad_question">20. Is the business fad without sustainable value?:</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="fad_positive" name="fad_question" value="1" required>
+                            <label for="fad_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="fad_negative" name="fad_question" value="-1" required>
+                            <label for="fad_negative">Negative</label>
+                        </div>
+                         <div>
+                            <input type="radio" id="fad_na" name="fad_question" value="0" required>
+                            <label for="fad_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="fad_comment" name="fad_comment" placeholder="" required></textarea>
+                </div>
+                
+                    <div class="form-group">
+                    <label for="cyclical_dependent_question">21. Is the business cyclical or overly dependent on 1 product?:</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="cyclical_dependent_positive" name="cyclical_dependent_question" value="1" required>
+                            <label for="cyclical_dependent_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="cyclical_dependent_negative" name="cyclical_dependent_question" value="-1" required>
+                            <label for="cyclical_dependent_negative">Negative</label>
+                        </div>
+                         <div>
+                            <input type="radio" id="cyclical_dependent_na" name="cyclical_dependent_question" value="0" required>
+                            <label for="cyclical_dependent_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="cyclical_dependent_comment" name="cyclical_dependent_comment" placeholder="" required></textarea>
+                </div>
+            
+                <div class="form-group">
+                    <label for="net_cash_generator_question">22. Is the company a net-cash generator? Free cashflow analysis.':</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="net_cash_generator_positive" name="net_cash_generator_question" value="2" required>
+                            <label for="net_cash_generator_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="net_cash_generator_negative" name="net_cash_generator_question" value="-2" required>
+                            <label for="net_cash_generator_negative">Negative</label>
+                        </div>
+                         <div>
+                            <input type="radio" id="net_cash_generator_na" name="net_cash_generator_question" value="0" required>
+                            <label for="net_cash_generator_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="net_cash_generator_comment" name="net_cash_generator_comment" placeholder="" required></textarea>
+                </div>
+            
+                    <div class="form-group">
+                        <label>23. Does the entity have the following; Justify?</label>
+                        <div class="form-group">
+                            <label for="economies_of_scale_scope_question">• Economies of scale and scope (Wal-Mart, Cintas)</label>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <div>
+                                    <input type="radio" id="economies_of_scale_scope_positive" name="economies_of_scale_scope_question" value="1" required>
+                                    <label for="economies_of_scale_scope_positive">Positive</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="economies_of_scale_scope_negative" name="economies_of_scale_scope_question" value="-1" required>
+                                    <label for="economies_of_scale_scope_negative">Negative</label>
+                                </div>
+                                 <div>
+                                    <input type="radio" id="economies_of_scale_scope_na" name="economies_of_scale_scope_question" value="0" required>
+                                    <label for="economies_of_scale_scope_na">N/A</label>
+                                </div>
+                            </div>
+                            <textarea id="economies_of_scale_scope_comment" name="economies_of_scale_scope_comment" placeholder="" required></textarea>
+                        </div>
+                
+                        <div class="form-group">
+                            <label for="network_effect_question">• Network effect (eBay, Visa, American Express)</label>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <div>
+                                    <input type="radio" id="network_effect_positive" name="network_effect_question" value="1" required>
+                                    <label for="network_effect_positive">Positive</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="network_effect_negative" name="network_effect_question" value="-1" required>
+                                    <label for="network_effect_negative">Negative</label>
+                                </div>
+                                 <div>
+                                    <input type="radio" id="network_effect_na" name="network_effect_question" value="0" required>
+                                    <label for="network_effect_na">N/A</label>
+                                </div>
+                            </div>
+                            <textarea id="network_effect_comment" name="network_effect_comment" placeholder="" required></textarea>
+                        </div>
+                
+                        <div class="form-group">
+                            <label for="intellectual_property_rights_question">• Intellectual property rights (Disney, Nike, Genentech)</label>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <div>
+                                    <input type="radio" id="intellectual_property_rights_positive" name="intellectual_property_rights_question" value="1" required>
+                                    <label for="intellectual_property_rights_positive">Positive</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="intellectual_property_rights_negative" name="intellectual_property_rights_question" value="-1" required>
+                                    <label for="intellectual_property_rights_negative">Negative</label>
+                                </div>
+                                 <div>
+                                    <input type="radio" id="intellectual_property_rights_na" name="intellectual_property_rights_question" value="0" required>
+                                    <label for="intellectual_property_rights_na">N/A</label>
+                                </div>
+                            </div>
+                            <textarea id="intellectual_property_rights_comment" name="intellectual_property_rights_comment" placeholder="" required></textarea>
+                        </div>
+                
+                        <div class="form-group">
+                            <label for="high_switching_costs_question">• High switching costs for customers (Paychex, Microsoft)</label>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <div>
+                                    <input type="radio" id="high_switching_costs_positive" name="high_switching_costs_question" value="1" required>
+                                    <label for="high_switching_costs_positive">Positive</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="high_switching_costs_negative" name="high_switching_costs_question" value="-1" required>
+                                    <label for="high_switching_costs_negative">Negative</label>
+                                </div>
+                                 <div>
+                                    <input type="radio" id="high_switching_costs_na" name="high_switching_costs_question" value="0" required>
+                                    <label for="high_switching_costs_na">N/A</label>
+                                </div>
+                            </div>
+                            <textarea id="high_switching_costs_comment" name="high_switching_costs_comment" placeholder="" required></textarea>
+                        </div>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="oligopolist_market_question">24. Does the entity operate in an monopolistic or oligopolist market?:</label>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div>
+                                <input type="radio" id="oligopolist_market_positive" name="oligopolist_market_question" value="3" required>
+                                <label for="oligopolist_market_positive">Positive</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="oligopolist_market_negative" name="oligopolist_market_question" value="-3" required>
+                                <label for="oligopolist_market_negative">Negative</label>
+                            </div>
+                             <div>
+                                <input type="radio" id="oligopolist_market_na" name="oligopolist_market_question" value="0" required>
+                                <label for="oligopolist_market_na">N/A</label>
+                            </div>
+                        </div>
+                        <textarea id="oligopolist_market_comment" name="oligopolist_market_comment" placeholder="" required></textarea>
+                    </div>
+
+                <div class="form-group">
+                    <label for="utb1_documents">Documents:</label>
+
+                        <input type="file" id="utb1_documents" name="utb1_documents[]" multiple>
+                        
+            </section>
+        </div>
+        <button type="submit" class="btn btn-primary">Save and Move to Next Page</button>
+    </form>
+</div>
+
+<script>
+
+    var i = 0;
+function move() {
+  if (i === 0) {
+    i = 1;
+    var elem = document.getElementById("myBar");
+    elem.style.width = "0%"; // Ensure initial width is set
+
+    fetch('/get-progress') // Replace '/get-progress' with your server endpoint
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json(); // Assuming your server sends JSON
+      })
+      .then(data => {
+        var width = data.progress; // Assuming your JSON has a 'progress' property
+        if (width >= 0 && width <= 100) { // Validate the width
+          elem.style.width = width + "%";
+          elem.innerHTML = width + "%";
+        } else {
+          console.error("Invalid progress value from server:", width);
+        }
+      })
+      .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+      });
+  }
+}
+
+    // Automatically start the progress bar when the page loads
+    window.onload = function() {
+        move();
+    };
+
+//Confirm submission
+
+// Add event listener to the form to trigger confirmation
+document.getElementById('uploadForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                // Get all file input elements
+                const fileInputs = document.querySelectorAll('input[type="file"]');
+                let confirmationMessage = "Please confirm the files you have selected:\n\n";
+                let totalSize = 0;
+                const maxSize = 100 * 1024 * 1024; // 100MB in bytes
+
+                let hasFiles = false; // Track if any files were selected
+
+                // Iterate over each file input
+                fileInputs.forEach(input => {
+                    if (input.files && input.files.length > 0) {
+                        hasFiles = true;
+                        confirmationMessage += `${input.id}:\n`;
+                        for (let i = 0; i < input.files.length; i++) {
+                            const file = input.files[i];
+                            totalSize += file.size;
+                            // Get file size in KB or MB
+                            const fileSizeKB = file.size / 1024; // Size in KB
+                            let fileSizeDisplay;
+                            if (fileSizeKB > 1024) {
+                                fileSizeDisplay = (fileSizeKB / 1024).toFixed(2) + " MB"; // Size in MB
+                            } else {
+                                fileSizeDisplay = fileSizeKB.toFixed(2) + " KB"; // Size in KB
+                            }
+                            confirmationMessage += `  - ${file.name} (${fileSizeDisplay})\n`;
+                        }
+                        confirmationMessage += "\n";
+                    }
+                });
+
+                //convert totalSize to MB
+                const totalSizeMB = (totalSize / (1024 * 1024)).toFixed(2);
+
+                confirmationMessage = `Total upload size: ${totalSizeMB} MB / 100 MB\n\n${confirmationMessage}`;
+
+
+                // If no files were selected, show a message and allow submission
+                if (!hasFiles) {
+                    alert("No files were selected for upload.  Submitting form.");
+                    this.submit(); // Use 'this' to refer to the form
+                    return;
+                }
+
+                if (totalSize > maxSize) {
+                    alert(`Total upload size (${totalSizeMB} MB) exceeds the limit of 100 MB. Please reduce the number of files.`);
+                    return;
+                }
+
+                // Show the confirmation dialog
+                const userConfirmed = confirm(confirmationMessage);
+
+                // If the user confirms, submit the form
+                if (userConfirmed) {
+                    this.submit(); // Use 'this' to refer to the form
+                } else {
+                    alert("File upload cancelled.");
+                    // Optionally, you can reset the form or clear the file inputs here
+                }
+            });
+            
+// Disable the back button
+history.pushState(null, null, location.href);
+window.onpopstate = function () {
+    history.pushState(null, null, location.href);
+};
+</script>
+
+

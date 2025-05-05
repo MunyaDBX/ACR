@@ -1,0 +1,195 @@
+<%- include('partials/tracker.ejs'); -%>
+
+<div class="broader">
+    <div id="myProgress">
+        <div id="myBar">20%</div>
+      </div>
+</div>
+    <div id="myChart">
+        <h2>Score: <%= locals.score %> %</h2>
+        <canvas id="companyScoreChart" width="5" height="5"></canvas>
+    </div>
+
+    <div id="myChart" class="space-y-4">
+        <div class="tooltip">
+            <h2 class="text-xl font-semibold text-gray-800">Margin of safety: <span class="text-blue-500">15</span>%</h2>
+            <span class="tooltiptext">Margin of safety is the difference between the intrinsic value of a business and the price you pay for it. It's essentially the cushion or discount you have when you buy a stock below what it's truly worth. A comfortable MOS is above 50% as per Allanite policy but we can always justify why we are purchasing without a cushion of 50%.</span>
+        </div>
+        
+        <div class="flex justify-center gap-4">      
+            <div class="tooltip">
+                <form action="/" method="GET">
+                    <button type="submit" class="btn btn-secondary">Later</button>
+                    <span class="tooltiptext">Add to Watchlist:  Save this stock for later review if the stock does not satisfy our requirements as yet.</span>
+                </form>
+            </div>
+        
+            <div class="tooltip">
+            <form action="/final" method="POST">
+                <button type="submit" class="btn btn-primary">Buy</button>
+                <span class="tooltiptext">Buy Stock:  This will lead to a final assessment form which assesses the potential risks and rewards of the investment and whether you are in the right state of mind to make the purchase.</span>      
+            </form>
+            </div>
+    </div>
+    </div>
+    
+</div>
+    <br>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const companyScore = parseInt('<%= locals.score %>%'); // Parse as integer
+            const maxScore = 100
+            const ctx = document.getElementById('companyScoreChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Score'],
+                    datasets: [{
+                        data: [companyScore,  maxScore - companyScore],
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.8)',
+                            'rgba(200, 200, 200, 0.8)'
+                        ],
+                        borderColor: [
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(200, 200, 200, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false // Hide legend
+                        },
+                         tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed !== null) {
+                                        label += context.parsed + '%';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+  
+  <script>
+  
+    var i = 0;
+  function move() {
+  if (i === 0) {
+    i = 1;
+    var elem = document.getElementById("myBar");
+    elem.style.width = "0%"; // Ensure initial width is set
+  
+    fetch('/get-progress') // Replace '/get-progress' with your server endpoint
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json(); // Assuming your server sends JSON
+      })
+      .then(data => {
+        var width = data.progress; // Assuming your JSON has a 'progress' property
+        if (width >= 0 && width <= 100) { // Validate the width
+          elem.style.width = width + "%";
+          elem.innerHTML = width + "%";
+        } else {
+          console.error("Invalid progress value from server:", width);
+        }
+      })
+      .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+      });
+  }
+  }
+  
+    // Automatically start the progress bar when the page loads
+    window.onload = function() {
+        move();
+    };
+  
+  //Confirm submission
+  
+  // Add event listener to the form to trigger confirmation
+  document.getElementById('uploadForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+  
+                // Get all file input elements
+                const fileInputs = document.querySelectorAll('input[type="file"]');
+                let confirmationMessage = "Please confirm the files you have selected:\n\n";
+                let totalSize = 0;
+                const maxSize = 100 * 1024 * 1024; // 100MB in bytes
+  
+                let hasFiles = false; // Track if any files were selected
+  
+                // Iterate over each file input
+                fileInputs.forEach(input => {
+                    if (input.files && input.files.length > 0) {
+                        hasFiles = true;
+                        confirmationMessage += `${input.id}:\n`;
+                        for (let i = 0; i < input.files.length; i++) {
+                            const file = input.files[i];
+                            totalSize += file.size;
+                            // Get file size in KB or MB
+                            const fileSizeKB = file.size / 1024; // Size in KB
+                            let fileSizeDisplay;
+                            if (fileSizeKB > 1024) {
+                                fileSizeDisplay = (fileSizeKB / 1024).toFixed(2) + " MB"; // Size in MB
+                            } else {
+                                fileSizeDisplay = fileSizeKB.toFixed(2) + " KB"; // Size in KB
+                            }
+                            confirmationMessage += `  - ${file.name} (${fileSizeDisplay})\n`;
+                        }
+                        confirmationMessage += "\n";
+                    }
+                });
+  
+                //convert totalSize to MB
+                const totalSizeMB = (totalSize / (1024 * 1024)).toFixed(2);
+  
+                confirmationMessage = `Total upload size: ${totalSizeMB} MB / 100 MB\n\n${confirmationMessage}`;
+  
+  
+                // If no files were selected, show a message and allow submission
+                if (!hasFiles) {
+                    alert("No files were selected for upload.  Submitting form.");
+                    this.submit(); // Use 'this' to refer to the form
+                    return;
+                }
+  
+                if (totalSize > maxSize) {
+                    alert(`Total upload size (${totalSizeMB} MB) exceeds the limit of 100 MB. Please reduce the number of files.`);
+                    return;
+                }
+  
+                // Show the confirmation dialog
+                const userConfirmed = confirm(confirmationMessage);
+  
+                // If the user confirms, submit the form
+                if (userConfirmed) {
+                    this.submit(); // Use 'this' to refer to the form
+                } else {
+                    alert("File upload cancelled.");
+                    // Optionally, you can reset the form or clear the file inputs here
+                }
+            });
+  // Disable the back button
+history.pushState(null, null, location.href);
+window.onpopstate = function () {
+    history.pushState(null, null, location.href);
+};
+  </script>
+  

@@ -1,0 +1,380 @@
+<%- include('partials/tracker.ejs'); -%>
+
+<div class="broader">
+    <div id="myProgress">
+        <div id="myBar">20%</div>
+      </div>
+</div>
+
+<div class="form-holder">
+    <form action="/submit-utf2" method="post" enctype="multipart/form-data" id="uploadForm">
+        <div class="form-container">
+            <h2>Understanding the Finances 2</h2>
+            <section class="checkbox-section">
+                <div class="form-group">
+                    <label for="interest_cover">1. Is the Interest Cover above 3?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="interest_cover_positive" name="interest_cover" value="2" required>
+                            <label for="interest_cover_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="interest_cover_negative" name="interest_cover" value="-2" required>
+                            <label for="interest_cover_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="interest_cover_na" name="interest_cover" value="0" required>
+                            <label for="interest_cover_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="interest_cover_comment" name="interest_cover_comment" placeholder="Explain the Interest Cover." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="loan_covenants">2. Confirm the investee does not have any loans or broken loan covenants above current cash holding due in the next 12 months?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="loan_covenants_positive" name="loan_covenants" value="1" required>
+                            <label for="loan_covenants_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="loan_covenants_negative" name="loan_covenants" value="-1" required>
+                            <label for="loan_covenants_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="loan_covenants_na" name="loan_covenants" value="0" required>
+                            <label for="loan_covenants_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="loan_covenants_comment" name="loan_covenants_comment" placeholder="Confirm loan covenants and cash holdings." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="off_balance_liabilities">3. Confirm the investee does not have any Off-balance sheet liabilities that have not been properly taken into account?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="off_balance_liabilities_positive" name="off_balance_liabilities" value="1" required>
+                            <label for="off_balance_liabilities_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="off_balance_liabilities_negative" name="off_balance_liabilities" value="-1" required>
+                            <label for="off_balance_liabilities_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="off_balance_liabilities_na" name="off_balance_liabilities" value="0" required>
+                            <label for="off_balance_liabilities_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="off_balance_liabilities_comment" name="off_balance_liabilities_comment" placeholder="Detail any off-balance sheet liabilities." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="hidden_values">4. Confirm if the investee has any hidden values and consider the effect they could have on the balance sheet and valuation of the business?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="hidden_values_positive" name="hidden_values" value="1" required>
+                            <label for="hidden_values_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="hidden_values_negative" name="hidden_values" value="-1" required>
+                            <label for="hidden_values_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="hidden_values_na" name="hidden_values" value="0" required>
+                            <label for="hidden_values_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="hidden_values_comment" name="hidden_values_comment" placeholder="Describe any hidden values and their potential impact.(e.g. properties, LIFO inventory, depreciation & amortization)" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cash_conversion_cycle">5. Confirm the cash conversion cycle is good compared to the industry which the entity operates in and the past?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="cash_conversion_cycle_positive" name="cash_conversion_cycle" value="1" required>
+                            <label for="cash_conversion_cycle_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="cash_conversion_cycle_negative" name="cash_conversion_cycle" value="-1" required>
+                            <label for="cash_conversion_cycle_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="cash_conversion_cycle_na" name="cash_conversion_cycle" value="0" required>
+                            <label for="cash_conversion_cycle_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="cash_conversion_cycle_comment" name="cash_conversion_cycle_comment" placeholder="Compare cash conversion cycle to industry and past trends." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="capex_depreciation">6. Is the CAPEX of the business closely related to the depreciation accounted for over the past 10 years?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="capex_depreciation_positive" name="capex_depreciation" value="2" required>
+                            <label for="capex_depreciation_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="capex_depreciation_negative" name="capex_depreciation" value="-2" required>
+                            <label for="capex_depreciation_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="capex_depreciation_na" name="capex_depreciation" value="0" required>
+                            <label for="capex_depreciation_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="capex_depreciation_comment" name="capex_depreciation_comment" placeholder="Analyze the relationship between CAPEX and depreciation." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cashflow_allocation">7. How does the cashflow allocation of the business look like,is it shareholder oriented? and are the capital investments necessary and will they grow the business?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="cashflow_allocation_positive" name="cashflow_allocation" value="3" required>
+                            <label for="cashflow_allocation_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="cashflow_allocation_negative" name="cashflow_allocation" value="-3" required>
+                            <label for="cashflow_allocation_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="cashflow_allocation_na" name="cashflow_allocation" value="0" required>
+                            <label for="cashflow_allocation_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="cashflow_allocation_comment" name="cashflow_allocation_comment" placeholder="Describe the cashflow allocation and its shareholder orientation.(maintainance,dividends,acquisition,share buyback or capex expansion)" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="future_capex_equity">8. Are there any chances that the company will raise Capex in the near future?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="future_capex_equity_positive" name="future_capex_equity" value="3" required>
+                            <label for="future_capex_equity_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="future_capex_equity_negative" name="future_capex_equity" value="-3" required>
+                            <label for="future_capex_equity_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="future_capex_equity_na" name="future_capex_equity" value="0" required>
+                            <label for="future_capex_equity_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="future_capex_equity_comment" name="future_capex_equity_comment" placeholder="Assess future CAPEX and equity financing requirements.In the foreseeable future will the growth of the company require sufficient equity financing so that the larger number of shares then outstanding will largely cancel the existing stockholders' benefit from this anticipated growth?" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="debt_equity_trend">9. What is the trend in Debt to Equity ratio over the past 5 years?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="debt_equity_trend_positive" name="debt_equity_trend" value="1" required>
+                            <label for="debt_equity_trend_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="debt_equity_trend_negative" name="debt_equity_trend" value="-1" required>
+                            <label for="debt_equity_trend_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="debt_equity_trend_na" name="debt_equity_trend" value="0" required>
+                            <label for="debt_equity_trend_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="debt_equity_trend_comment" name="debt_equity_trend_comment" placeholder="Describe the trend in Debt to Equity ratio over the past 5 years." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="share_buyback_issues">10. Is the share buy-back to issues analysis making sense,have they always issued less shares than what was purchased over the past 10 years? "</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="share_buyback_issues_positive" name="share_buyback_issues" value="3" required>
+                            <label for="share_buyback_issues_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="share_buyback_issues_negative" name="share_buyback_issues" value="-3" required>
+                            <label for="share_buyback_issues_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="share_buyback_issues_na" name="share_buyback_issues" value="0" required>
+                            <label for="share_buyback_issues_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="share_buyback_issues_comment" name="share_buyback_issues_comment" placeholder="Analyze share buy-backs and issues over the past 10 years.Where buybacks being made at a reasonable price and not at crazy premiums" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="balance_sheet_items">11. What are the significant items in the balance sheet?Are they liquid assets?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="balance_sheet_items_positive" name="balance_sheet_items" value="1" required>
+                            <label for="balance_sheet_items_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="balance_sheet_items_negative" name="balance_sheet_items" value="-1" required>
+                            <label for="balance_sheet_items_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="balance_sheet_items_na" name="balance_sheet_items" value="0" required>
+                            <label for="balance_sheet_items_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="balance_sheet_items_comment" name="balance_sheet_items_comment" placeholder="Describe significant balance sheet items and their liquidity." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="balance_sheet_changes">12. Have they been significant changes in the balance sheet and are these positive?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="balance_sheet_changes_positive" name="balance_sheet_changes" value="1" required>
+                            <label for="balance_sheet_changes_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="balance_sheet_changes_negative" name="balance_sheet_changes" value="-1" required>
+                            <label for="balance_sheet_changes_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="balance_sheet_changes_na" name="balance_sheet_changes" value="0" required>
+                            <label for="balance_sheet_changes_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="balance_sheet_changes_comment" name="balance_sheet_changes_comment" placeholder="Detail any significant changes in the balance sheet and their impact." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="capital_structure">13. What does the Capital Structure look like and is it beneficial to the shareholder?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="capital_structure_positive" name="capital_structure" value="3" required>
+                            <label for="capital_structure_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="capital_structure_negative" name="capital_structure" value="-3" required>
+                            <label for="capital_structure_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="capital_structure_na" name="capital_structure" value="0" required>
+                            <label for="capital_structure_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="capital_structure_comment" name="capital_structure_comment" placeholder="Describe the capital structure and its benefit to shareholders." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="utf2_documents">Documents:</label>
+  
+                        <input type="file" id="utf2_documents" name="utf2_documents[]" multiple>
+                        
+            </section>
+        </div>
+        <button type="submit" class="btn btn-primary">Save and Move to Next Page</button>
+    </form>
+  </div>
+  
+  <script>
+  // Disable the back button
+history.pushState(null, null, location.href);
+window.onpopstate = function () {
+    history.pushState(null, null, location.href);
+};
+
+    var i = 0;
+  function move() {
+  if (i === 0) {
+    i = 1;
+    var elem = document.getElementById("myBar");
+    elem.style.width = "0%"; // Ensure initial width is set
+  
+    fetch('/get-progress') // Replace '/get-progress' with your server endpoint
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json(); // Assuming your server sends JSON
+      })
+      .then(data => {
+        var width = data.progress; // Assuming your JSON has a 'progress' property
+        if (width >= 0 && width <= 100) { // Validate the width
+          elem.style.width = width + "%";
+          elem.innerHTML = width + "%";
+        } else {
+          console.error("Invalid progress value from server:", width);
+        }
+      })
+      .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+      });
+  }
+  }
+  
+    // Automatically start the progress bar when the page loads
+    window.onload = function() {
+        move();
+    };
+  
+  //Confirm submission
+  
+  // Add event listener to the form to trigger confirmation
+  document.getElementById('uploadForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+  
+                // Get all file input elements
+                const fileInputs = document.querySelectorAll('input[type="file"]');
+                let confirmationMessage = "Please confirm the files you have selected:\n\n";
+                let totalSize = 0;
+                const maxSize = 100 * 1024 * 1024; // 100MB in bytes
+  
+                let hasFiles = false; // Track if any files were selected
+  
+                // Iterate over each file input
+                fileInputs.forEach(input => {
+                    if (input.files && input.files.length > 0) {
+                        hasFiles = true;
+                        confirmationMessage += `${input.id}:\n`;
+                        for (let i = 0; i < input.files.length; i++) {
+                            const file = input.files[i];
+                            totalSize += file.size;
+                            // Get file size in KB or MB
+                            const fileSizeKB = file.size / 1024; // Size in KB
+                            let fileSizeDisplay;
+                            if (fileSizeKB > 1024) {
+                                fileSizeDisplay = (fileSizeKB / 1024).toFixed(2) + " MB"; // Size in MB
+                            } else {
+                                fileSizeDisplay = fileSizeKB.toFixed(2) + " KB"; // Size in KB
+                            }
+                            confirmationMessage += `  - ${file.name} (${fileSizeDisplay})\n`;
+                        }
+                        confirmationMessage += "\n";
+                    }
+                });
+  
+                //convert totalSize to MB
+                const totalSizeMB = (totalSize / (1024 * 1024)).toFixed(2);
+  
+                confirmationMessage = `Total upload size: ${totalSizeMB} MB / 100 MB\n\n${confirmationMessage}`;
+  
+  
+                // If no files were selected, show a message and allow submission
+                if (!hasFiles) {
+                    alert("No files were selected for upload.  Submitting form.");
+                    this.submit(); // Use 'this' to refer to the form
+                    return;
+                }
+  
+                if (totalSize > maxSize) {
+                    alert(`Total upload size (${totalSizeMB} MB) exceeds the limit of 100 MB. Please reduce the number of files.`);
+                    return;
+                }
+  
+                // Show the confirmation dialog
+                const userConfirmed = confirm(confirmationMessage);
+  
+                // If the user confirms, submit the form
+                if (userConfirmed) {
+                    this.submit(); // Use 'this' to refer to the form
+                } else {
+                    alert("File upload cancelled.");
+                    // Optionally, you can reset the form or clear the file inputs here
+                }
+            });
+  
+  </script>
+  

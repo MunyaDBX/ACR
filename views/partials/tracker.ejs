@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <title>Allanite ARC</title>
+
+</head>
+
+<body>
+  <header class="header">
+    <div class="logo" >
+      <a class="logo" href="/">
+      Allanite ⬆ 
+      </a>
+    </div>
+    <nav>
+      <a href="/">Home</a>
+    </nav>
+  </header>
+
+    <aside class="tracker-sidebar">
+
+            <div class="project-info-container">
+                <p class="project-header"><%= company.c_name %></p>
+                <p class="project-info">Ticker: <%= company.c_ticker %></p>
+                <p class="project-info">Checklist Completion: <%= company.c_comp %> %</p>
+                <p class="project-info">Score: <%= locals.score %>%</p>
+                <p class="project-info">Sector: <%= company.c_sector %></p>
+                <p class="project-info">Subsector: <%= company.c_sub %></p>
+                <p class="project-info">Country: <%= company.c_country %></p>
+                <p class="project-info">Currency: <%= company.c_currency %></p>
+                <p class="project-info">Exchange: <%= company.c_exchange %></p>
+                <p class="project-info">Website: <%= company.c_website %> </p>
+                <p class="project-info">Incorporation Date: <%= company.c_incorporation ? company.c_incorporation.toISOString().split('T')[0] : 'N/A' %> </p>
+                <p class="project-info">IPO Date: <%= company.c_ipo ? company.c_ipo.toISOString().split('T')[0] : 'N/A' %> </p>
+            </div>
+    </aside>
+  <main>
+ 

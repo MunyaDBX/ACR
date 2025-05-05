@@ -1,0 +1,213 @@
+<%- include('partials/header.ejs'); -%>
+<div class="container">
+    <h2>New Project</h2>
+    <form action="/companies" method="POST">
+        <div class="form-row">
+            <div class="form-group">
+                <input type="text" class="form-control" id="companyName" name="companyName" placeholder="Company Name" required>
+            </div>   
+            <div class="form-group">
+                <input type="text" class="form-control" id="website" name="website" placeholder="Website" required>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <input type="text" class="form-control" id="ceo" name="ceo" placeholder="Chief Executive Officer" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="chairman" name="chairman" placeholder="Chairman" required>
+            </div>
+
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+            <textarea class="form-control" id="description" name="description" placeholder="Description of Company" rows="" required></textarea>
+            </div>
+
+    
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <input type="number" class="form-control" id="employees" name="employees" placeholder="Number of employees" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="address" name="address" placeholder="Address" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <textarea class="form-control" id="interest" name="interest" placeholder="Why are you interested in the company?" rows="" required></textarea>
+                </div>
+        </div>
+        <div class="form-row" id="holding-label">
+            <div class="form-group">
+
+            </div>    
+            <div class="form-group" >
+                <p class="date-labels">IPO Date</p>
+            </div>
+            <div class="form-group">
+                <p class="date-labels" >Incorporation Date</p>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <input type="text" class="form-control" id="tickerSymbol" name="tickerSymbol" placeholder="Ticker Symbol" required>
+                </div>
+                
+            <div class="form-group">
+                <input type="date" class="form-control" id="ipo" name="ipo" placeholder="IPO Date" required>
+            </div>
+            <div class="form-group">
+                <input type="date" class="form-control" id="Incorporation" name="Incorporation" placeholder="Incorporation Date" required>
+            </div>
+        </div>
+
+        <div class="form-row">  
+            <div class="form-group">
+                <select class="form-control" id="Currency" name="Currency" required>
+                    <option value="" disabled selected>Select Currency</option>
+                    <% currencies.forEach(function(currency) { %>
+                        <option value="<%= currency %>"><%= currency %></option>
+                    <% }); %>
+                </select>
+            </div>     
+                
+    
+                <select class="form-control" id="exchange" name="exchange" required>
+                    <option value="" disabled selected>Select Exchange</option>
+                    <option value="NYSE">New York Stock Exchange (NYSE)</option>
+                    <option value="NASDAQ">NASDAQ</option>
+                    <option value="LSE">London Stock Exchange (LSE)</option>
+                    <option value="JPX">Japan Exchange Group (JPX)</option>
+                    <option value="SSE">Shanghai Stock Exchange (SSE)</option>
+                    <option value="HKEX">Hong Kong Stock Exchange (HKEX)</option>
+                    <option value="Euronext">Euronext</option>
+                    <option value="TSX">Toronto Stock Exchange (TSX)</option>
+                    <option value="BSE">Bombay Stock Exchange (BSE)</option>
+                    <option value="NSE">National Stock Exchange of India (NSE)</option>
+                    <option value="ASX">Australian Securities Exchange (ASX)</option>
+                    <option value="FWB">Frankfurt Stock Exchange (FWB)</option>
+                    <option value="ZSE">Zimbabwe Stock Exchange (ZSE)</option>
+                    <option value="JSE">Johannesburg Stock Exchange (JSE)</option>
+                    <option value="NSX">Namibian Stock Exchange (NSX)</option>
+                </select>
+                <div class="form-group">
+                    <select class="form-control" id="country" name="country" required>
+                        <option value="" disabled selected>Select Country of Incorporation</option>
+                        <% countries.forEach(function(country) { %>
+                            <option value="<%= country %>"><%= country %></option>
+                        <% }); %>
+                    </select>
+            </div>
+
+        </div>
+        <div class="form-row">
+    
+            <div class="form-group">
+                <select class="form-control" id="sector" name="sector" required>
+                    <option value="" disabled selected>Select Sector</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Healthcare">Healthcare</option>
+                    <option value="Energy">Energy</option>
+                    <option value="Consumer Goods">Consumer Goods</option>
+                    <option value="Utilities">Utilities</option>
+                    <option value="Industrials">Industrials</option>
+                    <option value="Materials">Materials</option>
+                    <option value="Real Estate">Real Estate</option>
+                    <option value="Telecommunications">Telecommunications</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select class="form-control" id="subSector" name="subSector" required>
+                    <option value="" disabled selected>Select Sub-sector</option>
+                    <option value="Software">Software</option>
+                    <option value="Hardware">Hardware</option>
+                    <option value="Banking">Banking</option>
+                    <option value="Insurance">Insurance</option>
+                    <option value="Biotechnology">Biotechnology</option>
+                    <option value="Pharmaceuticals">Pharmaceuticals</option>
+                    <option value="Oil & Gas">Oil & Gas</option>
+                    <option value="Renewable Energy">Renewable Energy</option>
+                    <option value="Food & Beverage">Food & Beverage</option>
+                    <option value="Retail">Retail</option>
+                    <option value="Electricity">Electricity</option>
+                    <option value="Water">Water</option>
+                    <option value="Manufacturing">Manufacturing</option>
+                    <option value="Mining">Mining</option>
+                    <option value="Construction">Construction</option>
+                    <option value="Real Estate Development">Real Estate Development</option>
+                    <option value="Telecom Services">Telecom Services</option>
+                    <option value="Automotive">Automotive</option>
+                    <option value="Aerospace">Aerospace</option>
+                    <option value="Logistics">Logistics</option>
+                    <option value="Media">Media</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Education">Education</option>
+                    <option value="Hospitality">Hospitality</option>
+                    <option value="Tourism">Tourism</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        
+    </form>
+</div>
+
+<script>
+
+    // Disable the back button
+history.pushState(null, null, location.href);
+window.onpopstate = function () {
+    history.pushState(null, null, location.href);
+};
+    // Validate the website URL format
+    document.getElementById('website').addEventListener('blur', function(event) {
+        const websiteInput = event.target;
+        const urlPattern = /^(https?:\/\/)?([\w-]+\.)+[\w-]{2,}(\/[\w-]*)*$/;
+        if (!urlPattern.test(websiteInput.value)) {
+            websiteInput.setCustomValidity('🤭Please enter a valid website URL.');
+            websiteInput.style.borderColor = 'red';
+        } else {
+            websiteInput.setCustomValidity('');
+            websiteInput.style.borderColor = '';
+        }
+    });
+
+    // Validate that the IPO date is not in the future
+    document.getElementById('ipo').addEventListener('input', function(event) {
+        const ipoDateInput = event.target;
+        const today = new Date().toISOString().split('T')[0];
+        if (ipoDateInput.value > today) {
+            ipoDateInput.setCustomValidity('🤭IPO date cannot be in the future.');
+            ipoDateInput.style.borderColor = 'red';
+        } else {
+            ipoDateInput.setCustomValidity('');
+            ipoDateInput.style.borderColor = '';
+        }
+    });
+
+    // Validate that the incorporation date is not in the future
+    document.getElementById('Incorporation').addEventListener('input', function(event) {
+        const incorporationDateInput = event.target;
+        const today = new Date().toISOString().split('T')[0];
+        if (incorporationDateInput.value > today) {
+            incorporationDateInput.setCustomValidity('🤭Incorporation date cannot be in the future.');
+            incorporationDateInput.style.borderColor = 'red';
+        } else {
+            incorporationDateInput.setCustomValidity('');
+            incorporationDateInput.style.borderColor = '';
+        }
+    });
+  
+</script>
+
+
+<%- include('partials/footer.ejs'); -%>

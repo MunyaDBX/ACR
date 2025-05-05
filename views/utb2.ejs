@@ -1,0 +1,360 @@
+<%- include('partials/tracker.ejs'); -%>
+
+<div class="broader">
+    <div id="myProgress">
+        <div id="myBar">20%</div>
+      </div>
+</div>
+
+<div class="form-holder">
+  <form action="/submit-utb2" method="post" enctype="multipart/form-data" id="uploadForm">
+      <div class="form-container">
+          <h2>Understanding the business 2</h2>
+
+          <section class="checkbox-section">
+            <div class="form-group">
+                <label for="stock_price_news_question">1. What was the news for the company when there were large movements in the stock price?</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>
+                        <input type="radio" id="stock_price_news_positive" name="stock_price_news_question" value="1" required>
+                        <label for="stock_price_news_positive">Positive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="stock_price_news_negative" name="stock_price_news_question" value="-1" required>
+                        <label for="stock_price_news_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="stock_price_news_na" name="stock_price_news_question" value="0" required>
+                        <label for="stock_price_news_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="stock_price_news_comment" name="stock_price_news_comment" placeholder="" required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="industry_occurrence_question">2. What is the current occurrence in the industry? Has there been consolidation, how often do market leaders change, and is the industry facing competition from other industries?</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>
+                        <input type="radio" id="industry_occurrence_positive" name="industry_occurrence_question" value="1" required>
+                        <label for="industry_occurrence_positive">Positive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="industry_occurrence_negative" name="industry_occurrence_question" value="-1" required>
+                        <label for="industry_occurrence_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="industry_occurrence_na" name="industry_occurrence_question" value="0" required>
+                        <label for="industry_occurrence_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="industry_occurrence_comment" name="industry_occurrence_comment" placeholder="" required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="investee_competitors_question">3. List Investee's competitors</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                     <div>
+                        <input type="radio" id="investee_competitors_positive" name="investee_competitors_question" value="0" required>
+                        <label for="investee_competitors_positive">Positive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="investee_competitors_negative" name="investee_competitors_question" value="0" required>
+                        <label for="investee_competitors_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="investee_competitors_na" name="investee_competitors_question" value="0" required>
+                        <label for="investee_competitors_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="investee_competitors_comment" name="investee_competitors_comment" placeholder="" required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="competitor_number_question">4. Are the number of competitors growing, shrinking, non-changing, or cyclical?</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>
+                        <input type="radio" id="competitor_number_positive" name="competitor_number_question" value="2" required>
+                        <label for="competitor_number_positive">Positive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="competitor_number_negative" name="competitor_number_question" value="-2" required>
+                        <label for="competitor_number_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="competitor_number_na" name="competitor_number_question" value="0" required>
+                        <label for="competitor_number_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="competitor_number_comment" name="competitor_number_comment" placeholder="" required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="merger_list_question">5. List Mergers that have been completed in the last 20 years?</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>
+                        <input type="radio" id="merger_list_positive" name="merger_list_question" value="0" required>
+                        <label for="merger_list_positive">Positive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="merger_list_negative" name="merger_list_question" value="0" required>
+                        <label for="merger_list_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="merger_list_na" name="merger_list_question" value="0" required>
+                        <label for="merger_list_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="merger_list_comment" name="merger_list_comment" placeholder="" required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="merger_price_question">6. How much have they paid per transaction, and was this considered a high/fair/low price?</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>
+                        <input type="radio" id="merger_price_positive" name="merger_price_question" value="3" required>
+                        <label for="merger_price_positive">Positive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="merger_price_negative" name="merger_price_question" value="-3" required>
+                        <label for="merger_price_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="merger_price_na" name="merger_price_question" value="0" required>
+                        <label for="merger_price_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="merger_price_comment" name="merger_price_comment" placeholder="" required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="merger_premium_question">7. Did the management say they were paying a premium for synergies or strategic value?</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>
+                        <input type="radio" id="merger_premium_positive" name="merger_premium_question" value="1" required>
+                        <label for="merger_premium_positive">Positive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="merger_premium_negative" name="merger_premium_question" value="-1" required>
+                        <label for="merger_premium_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="merger_premium_na" name="merger_premium_question" value="0" required>
+                        <label for="merger_premium_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="merger_premium_comment" name="merger_premium_comment" placeholder="" required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="merger_success_question">8. Where all mergers and acquisitions accretive within a reasonable time and where most of the acquisitions not later on sold? Could they integrate past mergers easily?</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>
+                        <input type="radio" id="merger_success_positive" name="merger_success_question" value="3" required>
+                        <label for="merger_success_positive">Positive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="merger_success_negative" name="merger_success_question" value="-3" required>
+                        <label for="merger_success_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="merger_success_na" name="merger_success_question" value="0" required>
+                        <label for="merger_success_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="merger_success_comment" name="merger_success_comment" placeholder="" required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="growth_history_question">9. Does the company have a history of growing organically or by acquisitions?</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>
+                        <input type="radio" id="growth_history_positive" name="growth_history_question" value="2" required>
+                        <label for="growth_history_positive">Positive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="growth_history_negative" name="growth_history_question" value="-2" required>
+                        <label for="growth_history_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="growth_history_na" name="growth_history_question" value="0" required>
+                        <label for="growth_history_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="growth_history_comment" name="growth_history_comment" placeholder="" required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="suppliers_list_question">10. List the company's important suppliers and what they supply?</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>
+                        <input type="radio" id="suppliers_list_positive" name="suppliers_list_question" value="0" required>
+                        <label for="suppliers_list_positive">Positive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="suppliers_list_negative" name="suppliers_list_question" value="-0" required>
+                        <label for="suppliers_list_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="suppliers_list_na" name="suppliers_list_question" value="0" required>
+                        <label for="suppliers_list_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="suppliers_list_comment" name="suppliers_list_comment" placeholder="" required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="customers_list_question">11. List the company's important customers and what they purchase from the company?</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>
+                        <input type="radio" id="customers_list_positive" name="customers_list_question" value="0" required>
+                        <label for="customers_list_positive">Positive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="customers_list_negative" name="customers_list_question" value="-0" required>
+                        <label for="customers_list_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="customers_list_na" name="customers_list_question" value="0" required>
+                        <label for="customers_list_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="customers_list_comment" name="customers_list_comment" placeholder="" required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="supplier_replacement_question">12. Will the company be able to replace the key suppliers in case of supply shortage or dispute?</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>
+                        <input type="radio" id="supplier_replacement_positive" name="supplier_replacement_question" value="2" required>
+                        <label for="supplier_replacement_positive">Positive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="supplier_replacement_negative" name="supplier_replacement_question" value="-2" required>
+                        <label for="supplier_replacement_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="supplier_replacement_na" name="supplier_replacement_question" value="0" required>
+                        <label for="supplier_replacement_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="supplier_replacement_comment" name="supplier_replacement_comment" placeholder="" required></textarea>
+            </div>
+    
+              <div class="form-group">
+                  <label for="utb1_documents">Documents:</label>
+
+                      <input type="file" id="utb2_documents" name="utb2_documents[]" multiple>
+                      
+          </section>
+      </div>
+      <button type="submit" class="btn btn-primary">Save and Move to Next Page</button>
+  </form>
+</div>
+
+<script>
+
+  var i = 0;
+function move() {
+if (i === 0) {
+  i = 1;
+  var elem = document.getElementById("myBar");
+  elem.style.width = "0%"; // Ensure initial width is set
+
+  fetch('/get-progress') // Replace '/get-progress' with your server endpoint
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json(); // Assuming your server sends JSON
+    })
+    .then(data => {
+      var width = data.progress; // Assuming your JSON has a 'progress' property
+      if (width >= 0 && width <= 100) { // Validate the width
+        elem.style.width = width + "%";
+        elem.innerHTML = width + "%";
+      } else {
+        console.error("Invalid progress value from server:", width);
+      }
+    })
+    .catch(error => {
+      console.error('There has been a problem with your fetch operation:', error);
+    });
+}
+}
+
+  // Automatically start the progress bar when the page loads
+  window.onload = function() {
+      move();
+  };
+
+//Confirm submission
+
+// Add event listener to the form to trigger confirmation
+document.getElementById('uploadForm').addEventListener('submit', function(event) {
+              event.preventDefault(); // Prevent the default form submission
+
+              // Get all file input elements
+              const fileInputs = document.querySelectorAll('input[type="file"]');
+              let confirmationMessage = "Please confirm the files you have selected:\n\n";
+              let totalSize = 0;
+              const maxSize = 100 * 1024 * 1024; // 100MB in bytes
+
+              let hasFiles = false; // Track if any files were selected
+
+              // Iterate over each file input
+              fileInputs.forEach(input => {
+                  if (input.files && input.files.length > 0) {
+                      hasFiles = true;
+                      confirmationMessage += `${input.id}:\n`;
+                      for (let i = 0; i < input.files.length; i++) {
+                          const file = input.files[i];
+                          totalSize += file.size;
+                          // Get file size in KB or MB
+                          const fileSizeKB = file.size / 1024; // Size in KB
+                          let fileSizeDisplay;
+                          if (fileSizeKB > 1024) {
+                              fileSizeDisplay = (fileSizeKB / 1024).toFixed(2) + " MB"; // Size in MB
+                          } else {
+                              fileSizeDisplay = fileSizeKB.toFixed(2) + " KB"; // Size in KB
+                          }
+                          confirmationMessage += `  - ${file.name} (${fileSizeDisplay})\n`;
+                      }
+                      confirmationMessage += "\n";
+                  }
+              });
+
+              //convert totalSize to MB
+              const totalSizeMB = (totalSize / (1024 * 1024)).toFixed(2);
+
+              confirmationMessage = `Total upload size: ${totalSizeMB} MB / 100 MB\n\n${confirmationMessage}`;
+
+
+              // If no files were selected, show a message and allow submission
+              if (!hasFiles) {
+                  alert("No files were selected for upload.  Submitting form.");
+                  this.submit(); // Use 'this' to refer to the form
+                  return;
+              }
+
+              if (totalSize > maxSize) {
+                  alert(`Total upload size (${totalSizeMB} MB) exceeds the limit of 100 MB. Please reduce the number of files.`);
+                  return;
+              }
+
+              // Show the confirmation dialog
+              const userConfirmed = confirm(confirmationMessage);
+
+              // If the user confirms, submit the form
+              if (userConfirmed) {
+                  this.submit(); // Use 'this' to refer to the form
+              } else {
+                  alert("File upload cancelled.");
+                  // Optionally, you can reset the form or clear the file inputs here
+              }
+          });
+// Disable the back button
+history.pushState(null, null, location.href);
+window.onpopstate = function () {
+    history.pushState(null, null, location.href);
+};
+</script>

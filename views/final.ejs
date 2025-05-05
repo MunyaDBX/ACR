@@ -1,0 +1,674 @@
+<%- include('partials/tracker.ejs'); -%>
+
+<div class="broader">
+    <div id="myProgress">
+        <div id="myBar">80%</div>
+      </div>
+</div>
+
+<div class="form-holder">
+    <form action="/buy" method="post" enctype="multipart/form-data" id="uploadForm">
+        <div class="form-container">
+            <h2>Final Assessment</h2>
+            <section class="checkbox-section">
+                <div class="form-group">
+                    <label for="anything_wrong">1. Is there anything which could go wrong?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="anything_wrong_positive" name="anything_wrong" value="0" required>
+                            <label for="anything_wrong_positive">Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="anything_wrong_negative" name="anything_wrong" value="0" required>
+                            <label for="anything_wrong_negative">No</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="anything_wrong_na" name="anything_wrong" value="0" required>
+                            <label for="anything_wrong_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="anything_wrong_comment" name="anything_wrong_comment" placeholder="Explain what could go wrong." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="permanent_capital_loss">2. Is there a potential for permanent capital loss?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                         <div>
+                            <input type="radio" id="permanent_capital_loss_positive" name="permanent_capital_loss" value="0" required>
+                            <label for="permanent_capital_loss_positive">Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="permanent_capital_loss_negative" name="permanent_capital_loss" value="0" required>
+                            <label for="permanent_capital_loss_negative">No</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="permanent_capital_loss_na" name="permanent_capital_loss" value="0" required>
+                            <label for="permanent_capital_loss_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="permanent_capital_loss_comment" name="permanent_capital_loss_comment" placeholder="Explain the potential for permanent capital loss." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="wcwg_significance">3. Confirm the likelihood and magnitude of the WCGW occurring is not significant?</label>
+                     <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="wcwg_significance_positive" name="wcwg_significance" value="0" required>
+                            <label for="wcwg_significance_positive">Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="wcwg_significance_negative" name="wcwg_significance" value="0" required>
+                            <label for="wcwg_significance_negative">No</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="wcwg_significance_na" name="wcwg_significance" value="0" required>
+                            <label for="wcwg_significance_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="wcwg_significance_comment" name="wcwg_significance_comment" placeholder="Explain the likelihood and magnitude of WCGW." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="time_horizon">4. What is the expected time horizon for the gain?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="time_horizon_positive" name="time_horizon" value="0" required>
+                            <label for="time_horizon_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="time_horizon_negative" name="time_horizon" value="0" required>
+                            <label for="time_horizon_negative">Negative</label>
+                        </div>
+                         <div>
+                            <input type="radio" id="time_horizon_na" name="time_horizon" value="0" required>
+                            <label for="time_horizon_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="time_horizon_comment" name="time_horizon_comment" placeholder="Describe the expected time horizon for the gain." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="opportunity_attractiveness">5. How attractive is the opportunity compared to my current investment?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="opportunity_attractiveness_positive" name="opportunity_attractiveness" value="0" required>
+                            <label for="opportunity_attractiveness_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="opportunity_attractiveness_negative" name="opportunity_attractiveness" value="0" required>
+                            <label for="opportunity_attractiveness_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="opportunity_attractiveness_na" name="opportunity_attractiveness" value="0" required>
+                            <label for="opportunity_attractiveness_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="opportunity_attractiveness_comment" name="opportunity_attractiveness_comment" placeholder="Explain how attractive the opportunity is." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="biases_cloud_judgement">6. Do you have any biases that could cloud your judgement?</label>
+                     <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="biases_cloud_judgement_positive" name="biases_cloud_judgement" value="0" required>
+                            <label for="biases_cloud_judgement_positive">Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="biases_cloud_judgement_negative" name="biases_cloud_judgement" value="0" required>
+                            <label for="biases_cloud_judgement_negative">No</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="biases_cloud_judgement_na" name="biases_cloud_judgement" value="0" required>
+                            <label for="biases_cloud_judgement_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="biases_cloud_judgement_comment" name="biases_cloud_judgement_comment" placeholder="Describe any biases that could affect your judgment." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="stock_cheap">7. Is the stock cheap, and why? Is it because of the industry or economy?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="stock_cheap_positive" name="stock_cheap" value="0" required>
+                            <label for="stock_cheap_positive">Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="stock_cheap_negative" name="stock_cheap" value="-0" required>
+                            <label for="stock_cheap_negative">No</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="stock_cheap_na" name="stock_cheap" value="0" required>
+                            <label for="stock_cheap_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="stock_cheap_comment" name="stock_cheap_comment" placeholder="Explain why the stock is cheap and the reasons." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="infatuated_stock">8. Are you not infatuated with the stock?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="infatuated_stock_positive" name="infatuated_stock" value="0" required>
+                            <label for="infatuated_stock_positive">Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="infatuated_stock_negative" name="infatuated_stock" value="0" required>
+                            <label for="infatuated_stock_negative">No</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="infatuated_stock_na" name="infatuated_stock" value="0" required>
+                            <label for="infatuated_stock_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="infatuated_stock_comment" name="infatuated_stock_comment" placeholder="Explain your level of conviction and detachment." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="wcgw_mitigating_factors">9. Do all WCGW have reasonable mitigating factors?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="wcgw_mitigating_factors_positive" name="wcgw_mitigating_factors" value="0" required>
+                            <label for="wcgw_mitigating_factors_positive">Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="wcgw_mitigating_factors_negative" name="wcgw_mitigating_factors" value="0" required>
+                            <label for="wcgw_mitigating_factors_negative">No</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="wcgw_mitigating_factors_na" name="wcgw_mitigating_factors" value="0" required>
+                            <label for="wcgw_mitigating_factors_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="wcgw_mitigating_factors_comment" name="wcgw_mitigating_factors_comment" placeholder="Describe the mitigating factors for potential risks." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="days_reassessing">10. Have you spent at least 10 Days reassessing the checklist?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="days_reassessing_positive" name="days_reassessing" value="0" required>
+                            <label for="days_reassessing_positive">Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="days_reassessing_negative" name="days_reassessing" value="-0" required>
+                            <label for="days_reassessing_negative">No</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="days_reassessing_na" name="days_reassessing" value="0" required>
+                            <label for="days_reassessing_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="days_reassessing_comment" name="days_reassessing_comment" placeholder="Explain the duration of your reassessment." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="decision_past_performance">11. Is your decision based on past performance and no look in the future?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="decision_past_performance_positive" name="decision_past_performance" value="0" required>
+                            <label for="decision_past_performance_positive">Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="decision_past_performance_negative" name="decision_past_performance" value="0" required>
+                            <label for="decision_past_performance_negative">No</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="decision_past_performance_na" name="decision_past_performance" value="0" required>
+                            <label for="decision_past_performance_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="decision_past_performance_comment" name="decision_past_performance_comment" placeholder="Explain the basis of your decision." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="buying_near_low">12. Are you buying near the low of the past few years? (A stock may go as high as 125 and then decline to 60 and you think it attractive. 3 years before the stock sold at 20 which shows that there is some vulnerability in it.)</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="buying_near_low_positive" name="buying_near_low" value="0" required>
+                            <label for="buying_near_low_positive">Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="buying_near_low_negative" name="buying_near_low" value="-0" required>
+                            <label for="buying_near_low_negative">No</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="buying_near_low_na" name="buying_near_low" value="0" required>
+                            <label for="buying_near_low_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="buying_near_low_comment" name="buying_near_low_comment" placeholder="Explain your rationale for buying near the current price." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="general_sentiments_positive">13. Are general sentiments from other value investors positive?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="general_sentiments_positive_yes" name="general_sentiments_positive" value="0" required>
+                            <label for="general_sentiments_positive_yes">Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="general_sentiments_positive_no" name="general_sentiments_positive" value="0" required>
+                            <label for="general_sentiments_positive_no">No</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="general_sentiments_positive_na" name="general_sentiments_positive" value="0" required>
+                            <label for="general_sentiments_positive_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="general_sentiments_positive_comment" name="general_sentiments_positive_comment" placeholder="Describe the general sentiments from other value investors." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="market_closed_five_years">14. Imagine that the stock market closed down for five years. If you had no way of selling this stock to someone else, would you still be willing to own it?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="market_closed_five_years_positive" name="market_closed_five_years" value="0" required>
+                            <label for="market_closed_five_years_positive">Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="market_closed_five_years_negative" name="market_closed_five_years" value="0" required>
+                            <label for="market_closed_five_years_negative">No</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="market_closed_five_years_na" name="market_closed_five_years" value="0" required>
+                            <label for="market_closed_five_years_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="market_closed_five_years_comment" name="market_closed_five_years_comment" placeholder="Explain your willingness to own the stock in a closed market." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="reasons_to_own">15. Write down three reasons – having nothing to do with the stock price – why you want to be the owner of this business.</label>
+                    <textarea id="reasons_to_own_comment" name="reasons_to_own_comment" placeholder="List three reasons (excluding stock price) for ownership." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="understand_business">16. Do I understand the business? And by understand it, I mean have a reasonably good idea of what it will look like in five or ten years from an economic standpoint.”</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="understand_business_positive" name="understand_business" value="0" required>
+                            <label for="understand_business_positive">Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="understand_business_negative" name="understand_business" value="0" required>
+                            <label for="understand_business_negative">No</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="understand_business_na" name="understand_business" value="0" required>
+                            <label for="understand_business_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="understand_business_comment" name="understand_business_comment" placeholder="Explain your understanding of the business's future." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="downside_protection">17. Do I have enough downside protection and margin of safety?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="downside_protection_positive" name="downside_protection" value="0" required>
+                            <label for="downside_protection_positive">Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="downside_protection_negative" name="downside_protection" value="0" required>
+                            <label for="downside_protection_negative">No</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="downside_protection_na" name="downside_protection" value="0" required>
+                            <label for="downside_protection_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="downside_protection_comment" name="downside_protection_comment" placeholder="Explain your assessment of downside protection and margin of safety." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="staying_power">18. Does the company have enough staying power while we are waiting for the value to realize?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="staying_power_positive" name="staying_power" value="0" required>
+                            <label for="staying_power_positive">Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="staying_power_negative" name="staying_power" value="-0" required>
+                            <label for="staying_power_negative">No</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="staying_power_na" name="staying_power" value="0" required>
+                            <label for="staying_power_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="staying_power_comment" name="staying_power_comment" placeholder="Explain your assessment of the company's staying power." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="mediocre_idea">19. Is it a mediocre idea?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="mediocre_idea_positive" name="mediocre_idea" value="0" required>
+                            <label for="mediocre_idea_positive">Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="mediocre_idea_negative" name="mediocre_idea" value="0" required>
+                            <label for="mediocre_idea_negative">No</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="mediocre_idea_na" name="mediocre_idea" value="0" required>
+                            <label for="mediocre_idea_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="mediocre_idea_comment" name="mediocre_idea_comment" placeholder="Explain your assessment of the idea." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="compromise_safety_quality">20. Would I compromise my margin of safety or the quality/depth of my research because of lack of patience?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="compromise_safety_quality_positive" name="compromise_safety_quality" value="0" required>
+                            <label for="compromise_safety_quality_positive">Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="compromise_safety_quality_negative" name="compromise_safety_quality" value="0" required>
+                            <label for="compromise_safety_quality_negative">No</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="compromise_safety_quality_na" name="compromise_safety_quality" value="0" required>
+                            <label for="compromise_safety_quality_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="compromise_safety_quality_comment" name="compromise_safety_quality_comment" placeholder="Explain if you would compromise safety or research quality." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="too_hard_basket">21. Is it a too-hard basket case?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="too_hard_basket_positive" name="too_hard_basket" value="0" required>
+                            <label for="too_hard_basket_positive">Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="too_hard_basket_negative" name="too_hard_basket" value="0" required>
+                            <label for="too_hard_basket_negative">No</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="too_hard_basket_na" name="too_hard_basket" value="0" required>
+                            <label for="too_hard_basket_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="too_hard_basket_comment" name="too_hard_basket_comment" placeholder="Explain if it is a too-hard case." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="cash_instead">22. Should I keep cash instead? Time is on my side.</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="cash_instead_positive" name="cash_instead" value="0" required>
+                            <label for="cash_instead_positive">Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="cash_instead_negative" name="cash_instead" value="-0" required>
+                            <label for="cash_instead_negative">No</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="cash_instead_na" name="cash_instead" value="0" required>
+                            <label for="cash_instead_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="cash_instead_comment" name="cash_instead_comment" placeholder="Explain your rationale for cash vs. investment." required></textarea>
+                </div>
+
+                 <div class="form-group">
+                    <label for="wait_for_evidence">23. Should I wait for more evidence or better price?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="wait_for_evidence_positive" name="wait_for_evidence" value="0" required>
+                            <label for="wait_for_evidence_positive">Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="wait_for_evidence_negative" name="wait_for_evidence" value="0" required>
+                            <label for="wait_for_evidence_negative">No</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="wait_for_evidence_na" name="wait_for_evidence" value="0" required>
+                            <label for="wait_for_evidence_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="wait_for_evidence_comment" name="wait_for_evidence_comment" placeholder="Explain your rationale for waiting." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="primary_reason_undervalued">24. Can I say my primary reason to invest is because the business itself is undervalued?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="primary_reason_undervalued_positive" name="primary_reason_undervalued" value="0" required>
+                            <label for="primary_reason_undervalued_positive">Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="primary_reason_undervalued_negative" name="primary_reason_undervalued" value="0" required>
+                            <label for="primary_reason_undervalued_negative">No</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="primary_reason_undervalued_na" name="primary_reason_undervalued" value="0" required>
+                            <label for="primary_reason_undervalued_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="primary_reason_undervalued_comment" name="primary_reason_undervalued_comment" placeholder="Explain your primary reason for investing." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="studied_industry">25. Have I studied the industry?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="studied_industry_positive" name="studied_industry" value="0" required>
+                            <label for="studied_industry_positive">Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="studied_industry_negative" name="studied_industry" value="0" required>
+                            <label for="studied_industry_negative">No</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="studied_industry_na" name="studied_industry" value="0" required>
+                            <label for="studied_industry_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="studied_industry_comment" name="studied_industry_comment" placeholder="Describe your study of the industry." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="recheck_assumptions">26. Recheck every assumption and every figure. Is there any superficial reasoning?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="recheck_assumptions_positive" name="recheck_assumptions" value="0" required>
+                            <label for="recheck_assumptions_positive">Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="recheck_assumptions_negative" name="recheck_assumptions" value="0" required>
+                            <label for="recheck_assumptions_negative">No</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="recheck_assumptions_na" name="recheck_assumptions" value="0" required>
+                            <label for="recheck_assumptions_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="recheck_assumptions_comment" name="recheck_assumptions_comment" placeholder="Explain your process of rechecking assumptions." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="figure_too_good">27. Does any measurement or figure look too good to be true? How does it compare to industry average? Fraud??</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="figure_too_good_positive" name="figure_too_good" value="0" required>
+                            <label for="figure_too_good_positive">Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="figure_too_good_negative" name="figure_too_good" value="0" required>
+                            <label for="figure_too_good_negative">No</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="figure_too_good_na" name="figure_too_good" value="0" required>
+                            <label for="figure_too_good_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="figure_too_good_comment" name="figure_too_good_comment" placeholder="Explain your analysis of measurements and figures." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="other_securities">28. Consider other securities for different risk/reward balance: preferred's, bonds, options</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="other_securities_positive" name="other_securities" value="0" required>
+                            <label for="other_securities_positive">Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="other_securities_negative" name="other_securities" value="0" required>
+                            <label for="other_securities_negative">No</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="other_securities_na" name="other_securities" value="0" required>
+                            <label for="other_securities_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="other_securities_comment" name="other_securities_comment" placeholder="Explain your consideration of other securities." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="market_overvalued">29. Is the general market overvalued? (Shilling PE10, Tobin Q-ratio, S&P500 Market Cap vs GNP)</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="market_overvalued_positive" name="market_overvalued" value="0" required>
+                            <label for="market_overvalued_positive">Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="market_overvalued_negative" name="market_overvalued" value="0" required>
+                            <label for="market_overvalued_negative">No</label>
+                        </div>
+                         <div>
+                            <input type="radio" id="market_overvalued_na" name="market_overvalued" value="0" required>
+                            <label for="market_overvalued_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="market_overvalued_comment" name="market_overvalued_comment" placeholder="Explain your assessment of the general market valuation." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="final_documents">Documents:</label>
+  
+                        <input type="file" id="final_documents" name="final_documents[]" multiple>
+                        
+            </section>
+        </div>
+        <button type="submit" class="btn btn-primary">Complete purchase</button>
+    </form>
+    <br>
+    <div class="tooltip">
+        <form action="/" method="GET">
+            <button type="submit" class="btn btn-secondary">Later</button>
+            <span class="tooltiptext">Add to Watchlist:  Save this stock for later review if the stock does not satisfy our requirements as yet.</span>
+        </form>
+    </div>
+  </div>
+  
+  <script>
+    var i = 0;
+  function move() {
+  if (i === 0) {
+    i = 1;
+    var elem = document.getElementById("myBar");
+    elem.style.width = "0%"; // Ensure initial width is set
+  
+    fetch('/get-progress') // Replace '/get-progress' with your server endpoint
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json(); // Assuming your server sends JSON
+      })
+      .then(data => {
+        var width = data.progress; // Assuming your JSON has a 'progress' property
+        if (width >= 0 && width <= 100) { // Validate the width
+          elem.style.width = width + "%";
+          elem.innerHTML = width + "%";
+        } else {
+          console.error("Invalid progress value from server:", width);
+        }
+      })
+      .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+      });
+  }
+  }
+  
+    // Automatically start the progress bar when the page loads
+    window.onload = function() {
+        move();
+    };
+  
+  //Confirm submission
+  // Disable the back button
+history.pushState(null, null, location.href);
+window.onpopstate = function () {
+    history.pushState(null, null, location.href);
+};
+  // Add event listener to the form to trigger confirmation
+  document.getElementById('uploadForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+  
+                // Get all file input elements
+                const fileInputs = document.querySelectorAll('input[type="file"]');
+                let confirmationMessage = "Please confirm the files you have selected:\n\n";
+                let totalSize = 0;
+                const maxSize = 100 * 1024 * 1024; // 100MB in bytes
+  
+                let hasFiles = false; // Track if any files were selected
+  
+                // Iterate over each file input
+                fileInputs.forEach(input => {
+                    if (input.files && input.files.length > 0) {
+                        hasFiles = true;
+                        confirmationMessage += `${input.id}:\n`;
+                        for (let i = 0; i < input.files.length; i++) {
+                            const file = input.files[i];
+                            totalSize += file.size;
+                            // Get file size in KB or MB
+                            const fileSizeKB = file.size / 1024; // Size in KB
+                            let fileSizeDisplay;
+                            if (fileSizeKB > 1024) {
+                                fileSizeDisplay = (fileSizeKB / 1024).toFixed(2) + " MB"; // Size in MB
+                            } else {
+                                fileSizeDisplay = fileSizeKB.toFixed(2) + " KB"; // Size in KB
+                            }
+                            confirmationMessage += `  - ${file.name} (${fileSizeDisplay})\n`;
+                        }
+                        confirmationMessage += "\n";
+                    }
+                });
+  
+                //convert totalSize to MB
+                const totalSizeMB = (totalSize / (1024 * 1024)).toFixed(2);
+  
+                confirmationMessage = `Total upload size: ${totalSizeMB} MB / 100 MB\n\n${confirmationMessage}`;
+  
+  
+                // If no files were selected, show a message and allow submission
+                if (!hasFiles) {
+                    alert("No files were selected for upload.  Submitting form.");
+                    this.submit(); // Use 'this' to refer to the form
+                    return;
+                }
+  
+                if (totalSize > maxSize) {
+                    alert(`Total upload size (${totalSizeMB} MB) exceeds the limit of 100 MB. Please reduce the number of files.`);
+                    return;
+                }
+  
+                // Show the confirmation dialog
+                const userConfirmed = confirm(confirmationMessage);
+  
+                // If the user confirms, submit the form
+                if (userConfirmed) {
+                    this.submit(); // Use 'this' to refer to the form
+                } else {
+                    alert("File upload cancelled.");
+                    // Optionally, you can reset the form or clear the file inputs here
+                }
+            });
+  </script>
+  

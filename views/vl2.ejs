@@ -1,0 +1,381 @@
+<%- include('partials/tracker.ejs'); -%>
+
+<div class="broader">
+    <div id="myProgress">
+        <div id="myBar">20%</div>
+      </div>
+</div>
+
+<div class="form-holder">
+    <form action="/submit-vl2" method="post" enctype="multipart/form-data" id="uploadForm">
+        <div class="form-container">
+            <h2>Valuation 2</h2>
+            <section class="checkbox-section">
+                <div class="form-group">
+                    <label for="customer_satisfaction">1. Customer satisfaction: Is the Net Promoter Score (NPS) of the business high (70 excellent and 30 to 70 is very good)?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="customer_satisfaction_positive" name="customer_satisfaction" value="0" required>
+                            <label for="customer_satisfaction_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="customer_satisfaction_negative" name="customer_satisfaction" value="-0" required>
+                            <label for="customer_satisfaction_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="customer_satisfaction_na" name="customer_satisfaction" value="0" required>
+                            <label for="customer_satisfaction_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="customer_satisfaction_comment" name="customer_satisfaction_comment" placeholder="Companies with high customer satisfaction are likely to have high sales in the future because they have a high retention rate and therefore higher customer retention." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="growth_assumptions">2. Are your assumptions about growth upbeat and why?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="growth_assumptions_positive" name="growth_assumptions" value="1" required>
+                            <label for="growth_assumptions_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="growth_assumptions_negative" name="growth_assumptions" value="-1" required>
+                            <label for="growth_assumptions_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="growth_assumptions_na" name="growth_assumptions" value="0" required>
+                            <label for="growth_assumptions_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="growth_assumptions_comment" name="growth_assumptions_comment" placeholder="Explain your growth assumptions and their rationale." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="valuation_method">3. Is your valuation method relevant for the type of business you are valuing?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="valuation_method_positive" name="valuation_method" value="1" required>
+                            <label for="valuation_method_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="valuation_method_negative" name="valuation_method" value="-1" required>
+                            <label for="valuation_method_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="valuation_method_na" name="valuation_method" value="0" required>
+                            <label for="valuation_method_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="valuation_method_comment" name="valuation_method_comment" placeholder="Explain your valuation method and its relevance." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="business_model_assumptions">4. Are your assumptions about the business model realistic and why?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="business_model_assumptions_positive" name="business_model_assumptions" value="1" required>
+                            <label for="business_model_assumptions_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="business_model_assumptions_negative" name="business_model_assumptions" value="-1" required>
+                            <label for="business_model_assumptions_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="business_model_assumptions_na" name="business_model_assumptions" value="0" required>
+                            <label for="business_model_assumptions_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="business_model_assumptions_comment" name="business_model_assumptions_comment" placeholder="Explain your business model assumptions and their rationale." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="margins_returns">5. Are you confident that margins and returns will be maintained and why?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="margins_returns_positive" name="margins_returns" value="1" required>
+                            <label for="margins_returns_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="margins_returns_negative" name="margins_returns" value="-1" required>
+                            <label for="margins_returns_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="margins_returns_na" name="margins_returns" value="0" required>
+                            <label for="margins_returns_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="margins_returns_comment" name="margins_returns_comment" placeholder="Explain your confidence in maintaining margins and returns." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customer_emotion">6. How emotionally attached are the customers attached to the business?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="customer_emotion_positive" name="customer_emotion" value="3" required>
+                            <label for="customer_emotion_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="customer_emotion_negative" name="customer_emotion" value="-3" required>
+                            <label for="customer_emotion_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="customer_emotion_na" name="customer_emotion" value="0" required>
+                            <label for="customer_emotion_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="customer_emotion_comment" name="customer_emotion_comment" placeholder="Explain the emotional attachment of customers." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="switching_costs">7. Are there high switching costs to other suppliers (how robust are loyalty programs)?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="switching_costs_positive" name="switching_costs" value="2" required>
+                            <label for="switching_costs_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="switching_costs_negative" name="switching_costs" value="-2" required>
+                            <label for="switching_costs_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="switching_costs_na" name="switching_costs" value="0" required>
+                            <label for="switching_costs_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="switching_costs_comment" name="switching_costs_comment" placeholder="Explain switching costs and loyalty programs." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="social_connectivity">8. How robust is the social connectivity to the business (do customers feel obligated to buy from the business)?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="social_connectivity_positive" name="social_connectivity" value="2" required>
+                            <label for="social_connectivity_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="social_connectivity_negative" name="social_connectivity" value="-2" required>
+                            <label for="social_connectivity_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="social_connectivity_na" name="social_connectivity" value="0" required>
+                            <label for="social_connectivity_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="social_connectivity_comment" name="social_connectivity_comment" placeholder="Explain social connectivity and customer obligation." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="capital_structure_assumptions">9. Are your assumptions about future capital structure realistic and why?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="capital_structure_assumptions_positive" name="capital_structure_assumptions" value="1" required>
+                            <label for="capital_structure_assumptions_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="capital_structure_assumptions_negative" name="capital_structure_assumptions" value="-1" required>
+                            <label for="capital_structure_assumptions_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="capital_structure_assumptions_na" name="capital_structure_assumptions" value="0" required>
+                            <label for="capital_structure_assumptions_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="capital_structure_assumptions_comment" name="capital_structure_assumptions_comment" placeholder="Explain your capital structure assumptions and their rationale." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cyclicality_assumptions">10. Are your assumptions about cyclicality of the business realistic and why?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="cyclicality_assumptions_positive" name="cyclicality_assumptions" value="1" required>
+                            <label for="cyclicality_assumptions_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="cyclicality_assumptions_negative" name="cyclicality_assumptions" value="-1" required>
+                            <label for="cyclicality_assumptions_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="cyclicality_assumptions_na" name="cyclicality_assumptions" value="0" required>
+                            <label for="cyclicality_assumptions_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="cyclicality_assumptions_comment" name="cyclicality_assumptions_comment" placeholder="Explain your assumptions about the business's cyclicality." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="pending_events_assumptions">11. Are your assumptions about pending events e.g (lawsuits) realistic and why?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="pending_events_assumptions_positive" name="pending_events_assumptions" value="1" required>
+                            <label for="pending_events_assumptions_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="pending_events_assumptions_negative" name="pending_events_assumptions" value="-1" required>
+                            <label for="pending_events_assumptions_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="pending_events_assumptions_na" name="pending_events_assumptions" value="0" required>
+                            <label for="pending_events_assumptions_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="pending_events_assumptions_comment" name="pending_events_assumptions_comment" placeholder="Explain your assumptions about pending events." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="business_environment_assumptions">12. Are assumptions about the future business environment possible and why?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="business_environment_assumptions_positive" name="business_environment_assumptions" value="1" required>
+                            <label for="business_environment_assumptions_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="business_environment_assumptions_negative" name="business_environment_assumptions" value="-1" required>
+                            <label for="business_environment_assumptions_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="business_environment_assumptions_na" name="business_environment_assumptions" value="0" required>
+                            <label for="business_environment_assumptions_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="business_environment_assumptions_comment" name="business_environment_assumptions_comment" placeholder="Explain your assumptions about the future business environment." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="government_regulation_assumptions">13. Are your assumptions about government regulation realistic and why?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="government_regulation_assumptions_positive" name="government_regulation_assumptions" value="1" required>
+                            <label for="government_regulation_assumptions_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="government_regulation_assumptions_negative" name="government_regulation_assumptions" value="-1" required>
+                            <label for="government_regulation_assumptions_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="government_regulation_assumptions_na" name="government_regulation_assumptions" value="0" required>
+                            <label for="government_regulation_assumptions_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="government_regulation_assumptions_comment" name="government_regulation_assumptions_comment" placeholder="Explain your assumptions about government regulation." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="vl2_documents">Documents:</label>
+  
+                        <input type="file" id="vl2_documents" name="vl2_documents[]" multiple>
+                        
+            </section>
+        </div>
+        <button type="submit" class="btn btn-primary">Save and Move to Next Page</button>
+    </form>
+  </div>
+  
+  <script>
+  
+    var i = 0;
+  function move() {
+  if (i === 0) {
+    i = 1;
+    var elem = document.getElementById("myBar");
+    elem.style.width = "0%"; // Ensure initial width is set
+  
+    fetch('/get-progress') // Replace '/get-progress' with your server endpoint
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json(); // Assuming your server sends JSON
+      })
+      .then(data => {
+        var width = data.progress; // Assuming your JSON has a 'progress' property
+        if (width >= 0 && width <= 100) { // Validate the width
+          elem.style.width = width + "%";
+          elem.innerHTML = width + "%";
+        } else {
+          console.error("Invalid progress value from server:", width);
+        }
+      })
+      .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+      });
+  }
+  }
+  
+    // Automatically start the progress bar when the page loads
+    window.onload = function() {
+        move();
+    };
+  
+  //Confirm submission
+  
+  // Add event listener to the form to trigger confirmation
+  document.getElementById('uploadForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+  
+                // Get all file input elements
+                const fileInputs = document.querySelectorAll('input[type="file"]');
+                let confirmationMessage = "Please confirm the files you have selected:\n\n";
+                let totalSize = 0;
+                const maxSize = 100 * 1024 * 1024; // 100MB in bytes
+  
+                let hasFiles = false; // Track if any files were selected
+  
+                // Iterate over each file input
+                fileInputs.forEach(input => {
+                    if (input.files && input.files.length > 0) {
+                        hasFiles = true;
+                        confirmationMessage += `${input.id}:\n`;
+                        for (let i = 0; i < input.files.length; i++) {
+                            const file = input.files[i];
+                            totalSize += file.size;
+                            // Get file size in KB or MB
+                            const fileSizeKB = file.size / 1024; // Size in KB
+                            let fileSizeDisplay;
+                            if (fileSizeKB > 1024) {
+                                fileSizeDisplay = (fileSizeKB / 1024).toFixed(2) + " MB"; // Size in MB
+                            } else {
+                                fileSizeDisplay = fileSizeKB.toFixed(2) + " KB"; // Size in KB
+                            }
+                            confirmationMessage += `  - ${file.name} (${fileSizeDisplay})\n`;
+                        }
+                        confirmationMessage += "\n";
+                    }
+                });
+  
+                //convert totalSize to MB
+                const totalSizeMB = (totalSize / (1024 * 1024)).toFixed(2);
+  
+                confirmationMessage = `Total upload size: ${totalSizeMB} MB / 100 MB\n\n${confirmationMessage}`;
+  
+  
+                // If no files were selected, show a message and allow submission
+                if (!hasFiles) {
+                    alert("No files were selected for upload.  Submitting form.");
+                    this.submit(); // Use 'this' to refer to the form
+                    return;
+                }
+  
+                if (totalSize > maxSize) {
+                    alert(`Total upload size (${totalSizeMB} MB) exceeds the limit of 100 MB. Please reduce the number of files.`);
+                    return;
+                }
+  
+                // Show the confirmation dialog
+                const userConfirmed = confirm(confirmationMessage);
+  
+                // If the user confirms, submit the form
+                if (userConfirmed) {
+                    this.submit(); // Use 'this' to refer to the form
+                } else {
+                    alert("File upload cancelled.");
+                    // Optionally, you can reset the form or clear the file inputs here
+                }
+            });
+  // Disable the back button
+history.pushState(null, null, location.href);
+window.onpopstate = function () {
+    history.pushState(null, null, location.href);
+};
+
+// Additional functionality can be added here if needed
+
+  </script>
+  

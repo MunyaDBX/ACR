@@ -1,0 +1,437 @@
+<%- include('partials/tracker.ejs'); -%>
+
+<div class="broader">
+    <div id="myProgress">
+        <div id="myBar">20%</div>
+      </div>
+</div>
+
+<div class="form-holder">
+    <form action="/submit-vl1" method="post" enctype="multipart/form-data" id="uploadForm">
+        <div class="form-container">
+            <h2>Valuation 1</h2>
+            <section class="checkbox-section">
+                <div class="form-group">
+                    <label for="margin_of_safety">1. Is the margin of safety on the investment greater than 50%?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div class="form-group">
+                            <input type="number" class="form-control" id="shareprice" name="shareprice" placeholder="Current Share Price" required>
+                        </div>   
+                        <div class="form-group">
+                            <input type="number" class="form-control" id="valuation" name="valuation" placeholder="Valuation per Share" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="number" class="form-control" id="marginofsafety" name="marginofsafety" placeholder="Margin of safety %" value="" readonly>
+                            
+                        </div>
+                        
+                        <div>
+                            <input type="radio" id="margin_of_safety_positive" name="margin_of_safety" value="3" required>
+                            <label for="margin_of_safety_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="margin_of_safety_negative" name="margin_of_safety" value="-3" required>
+                            <label for="margin_of_safety_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="margin_of_safety_na" name="margin_of_safety" value="0" required>
+                            <label for="margin_of_safety_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="margin_of_safety_comment" name="margin_of_safety_comment" placeholder="Upload the valuation calculation" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="total_addressable_market">2. What is the total addressable market (TAM) for the business and where does the company stand in relation to this addressable market?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="total_addressable_market_positive" name="total_addressable_market" value="1" required>
+                            <label for="total_addressable_market_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="total_addressable_market_negative" name="total_addressable_market" value="-1" required>
+                            <label for="total_addressable_market_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="total_addressable_market_na" name="total_addressable_market" value="0" required>
+                            <label for="total_addressable_market_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="total_addressable_market_comment" name="total_addressable_market_comment" placeholder="Describe the TAM and the company's position." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tam_increased">3. Can TAM be increased?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="tam_increased_positive" name="tam_increased" value="2" required>
+                            <label for="tam_increased_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="tam_increased_negative" name="tam_increased" value="-2" required>
+                            <label for="tam_increased_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="tam_increased_na" name="tam_increased" value="0" required>
+                            <label for="tam_increased_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="tam_increased_comment" name="tam_increased_comment" placeholder="Explain if TAM can be increased." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="convert_near_customers">4. Can we convert near-customers?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="convert_near_customers_positive" name="convert_near_customers" value="1" required>
+                            <label for="convert_near_customers_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="convert_near_customers_negative" name="convert_near_customers" value="-1" required>
+                            <label for="convert_near_customers_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="convert_near_customers_na" name="convert_near_customers" value="0" required>
+                            <label for="convert_near_customers_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="convert_near_customers_comment" name="convert_near_customers_comment" placeholder="Explain if near-customers can be converted." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="resources_accelerating_growth">5. Are the resources committed to the category accelerating growth?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="resources_accelerating_growth_positive" name="resources_accelerating_growth" value="1" required>
+                            <label for="resources_accelerating_growth_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="resources_accelerating_growth_negative" name="resources_accelerating_growth" value="-1" required>
+                            <label for="resources_accelerating_growth_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="resources_accelerating_growth_na" name="resources_accelerating_growth" value="0" required>
+                            <label for="resources_accelerating_growth_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="resources_accelerating_growth_comment" name="resources_accelerating_growth_comment" placeholder="Explain if resources are accelerating growth." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="competition_hurting_profitability">6. Is competition hurting profitability?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="competition_hurting_profitability_positive" name="competition_hurting_profitability" value="3" required>
+                            <label for="competition_hurting_profitability_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="competition_hurting_profitability_negative" name="competition_hurting_profitability" value="-3" required>
+                            <label for="competition_hurting_profitability_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="competition_hurting_profitability_na" name="competition_hurting_profitability" value="0" required>
+                            <label for="competition_hurting_profitability_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="competition_hurting_profitability_comment" name="competition_hurting_profitability_comment" placeholder="Explain if competition is hurting profitability." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="anticipate_customer_behavior">7. Can we anticipate customer behavior?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="anticipate_customer_behavior_positive" name="anticipate_customer_behavior" value="1" required>
+                            <label for="anticipate_customer_behavior_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="anticipate_customer_behavior_negative" name="anticipate_customer_behavior" value="-1" required>
+                            <label for="anticipate_customer_behavior_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="anticipate_customer_behavior_na" name="anticipate_customer_behavior" value="0" required>
+                            <label for="anticipate_customer_behavior_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="anticipate_customer_behavior_comment" name="anticipate_customer_behavior_comment" placeholder="Explain if customer behavior can be anticipated." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="increase_purchase">8. What can we do to increase frequency and/or magnitude of purchase of the company's products?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="increase_purchase_positive" name="increase_purchase" value="1" required>
+                            <label for="increase_purchase_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="increase_purchase_negative" name="increase_purchase" value="-1" required>
+                            <label for="increase_purchase_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="increase_purchase_na" name="increase_purchase" value="0" required>
+                            <label for="increase_purchase_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="increase_purchase_comment" name="increase_purchase_comment" placeholder="Describe how to increase purchase frequency/magnitude." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="adoption_curve">
+                        9. Where is the company in the adoption curve?
+                    </label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="adoption_curve_positive" name="adoption_curve" value="3" required>
+                            <label for="adoption_curve_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="adoption_curve_negative" name="adoption_curve" value="-3" required>
+                            <label for="adoption_curve_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="adoption_curve_na" name="adoption_curve" value="0" required>
+                            <label for="adoption_curve_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="adoption_curve_comment" name="adoption_curve_comment" placeholder="Describe the company's position on the adoption curve." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="new_product_adoption">10. Do we expect new products of the company to be easily adopted?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="new_product_adoption_positive" name="new_product_adoption" value="2" required>
+                            <label for="new_product_adoption_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="new_product_adoption_negative" name="new_product_adoption" value="-2" required>
+                            <label for="new_product_adoption_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="new_product_adoption_na" name="new_product_adoption" value="0" required>
+                            <label for="new_product_adoption_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="new_product_adoption_comment" name="new_product_adoption_comment" placeholder="Explain the expected adoption rate of new products. (Relative advantage, Visibility, Trialability, Simplicity, Compatibility)" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contractual_business">11. Is the business a contractual business where revenue is guaranteed for certain periods?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="contractual_business_positive" name="contractual_business" value="2" required>
+                            <label for="contractual_business_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="contractual_business_negative" name="contractual_business" value="-2" required>
+                            <label for="contractual_business_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="contractual_business_na" name="contractual_business" value="0" required>
+                            <label for="contractual_business_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="contractual_business_comment" name="contractual_business_comment" placeholder="Explain if the business is contractual/subscription-based." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="churn_retention_rate">12. Is information publicly available to calculate Churn rate and retention rate?Does the company have a high NPS</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="churn_retention_rate_positive" name="churn_retention_rate" value="1" required>
+                            <label for="churn_retention_rate_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="churn_retention_rate_negative" name="churn_retention_rate" value="-1" required>
+                            <label for="churn_retention_rate_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="churn_retention_rate_na" name="churn_retention_rate" value="0" required>
+                            <label for="churn_retention_rate_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="churn_retention_rate_comment" name="churn_retention_rate_comment" placeholder="NPS as a Predictor of Churn: Customer satisfaction, as measured by NPS, is considered a good indicator of how likely customers are to leave (churn)." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customer_longevity">13. Does the business have a longevity of more than 5 years?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="customer_longevity_positive" name="customer_longevity" value="1" required>
+                            <label for="customer_longevity_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="customer_longevity_negative" name="customer_longevity" value="-1" required>
+                            <label for="customer_longevity_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="customer_longevity_na" name="customer_longevity" value="0" required>
+                            <label for="customer_longevity_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="customer_longevity_comment" name="customer_longevity_comment" placeholder="Explain the business's longevity." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="value_trap_signs">14. Does the entity have the following signs of a value trap?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="value_trap_signs_positive" name="value_trap_signs" value="3" required>
+                            <label for="value_trap_signs_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="value_trap_signs_negative" name="value_trap_signs" value="-3" required>
+                            <label for="value_trap_signs_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="value_trap_signs_na" name="value_trap_signs" value="0" required>
+                            <label for="value_trap_signs_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="value_trap_signs_comment" name="value_trap_signs_comment" placeholder="Explain the signs of a value trap. (Sector decline, Technical obsolescence, Flawed business model, High leverage, Aggressive accounting, Estimate revisions, Fierce competition, Consumer fads, Weak governance, Growth by acquisition)" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="vl1_documents">Documents:</label>
+  
+                        <input type="file" id="vl1_documents" name="vl1_documents[]" multiple>
+                        
+            </section>
+        </div>
+        <button type="submit" class="btn btn-primary">Save and Move to Next Page</button>
+    </form>
+  </div>
+  
+  <script>
+//margin of safety comp  
+  const sharePriceInput = document.getElementById('shareprice');
+  const valuationInput = document.getElementById('valuation');
+  const marginOfSafetyInput = document.getElementById('marginofsafety');
+
+  function calculateMarginOfSafety() {
+    const sharePrice = parseFloat(sharePriceInput.value);
+    const valuation = parseFloat(valuationInput.value);
+
+    if (!isNaN(sharePrice) && !isNaN(valuation)) {
+      if (valuation > 0) {
+        const margin = ((valuation - sharePrice) / valuation) * 100;
+        marginOfSafetyInput.value = margin.toFixed(0) ; // Display with 2 decimal places
+      } else {
+        marginOfSafetyInput.value = "N/A (Valuation <= 0)";
+      }
+    } else {
+      marginOfSafetyInput.value = ""; // Clear the result if inputs are not numbers
+    }
+  }
+
+  // Trigger the calculation when the value in either input field changes
+  sharePriceInput.addEventListener('input', calculateMarginOfSafety);
+  valuationInput.addEventListener('input', calculateMarginOfSafety);
+
+
+    var i = 0;
+  function move() {
+  if (i === 0) {
+    i = 1;
+    var elem = document.getElementById("myBar");
+    elem.style.width = "0%"; // Ensure initial width is set
+  
+    fetch('/get-progress') // Replace '/get-progress' with your server endpoint
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json(); // Assuming your server sends JSON
+      })
+      .then(data => {
+        var width = data.progress; // Assuming your JSON has a 'progress' property
+        if (width >= 0 && width <= 100) { // Validate the width
+          elem.style.width = width + "%";
+          elem.innerHTML = width + "%";
+        } else {
+          console.error("Invalid progress value from server:", width);
+        }
+      })
+      .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+      });
+  }
+  }
+  
+    // Automatically start the progress bar when the page loads
+    window.onload = function() {
+        move();
+    };
+  
+  //Confirm submission
+  
+  // Add event listener to the form to trigger confirmation
+  document.getElementById('uploadForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+  
+                // Get all file input elements
+                const fileInputs = document.querySelectorAll('input[type="file"]');
+                let confirmationMessage = "Please confirm the files you have selected:\n\n";
+                let totalSize = 0;
+                const maxSize = 100 * 1024 * 1024; // 100MB in bytes
+  
+                let hasFiles = false; // Track if any files were selected
+  
+                // Iterate over each file input
+                fileInputs.forEach(input => {
+                    if (input.files && input.files.length > 0) {
+                        hasFiles = true;
+                        confirmationMessage += `${input.id}:\n`;
+                        for (let i = 0; i < input.files.length; i++) {
+                            const file = input.files[i];
+                            totalSize += file.size;
+                            // Get file size in KB or MB
+                            const fileSizeKB = file.size / 1024; // Size in KB
+                            let fileSizeDisplay;
+                            if (fileSizeKB > 1024) {
+                                fileSizeDisplay = (fileSizeKB / 1024).toFixed(2) + " MB"; // Size in MB
+                            } else {
+                                fileSizeDisplay = fileSizeKB.toFixed(2) + " KB"; // Size in KB
+                            }
+                            confirmationMessage += `  - ${file.name} (${fileSizeDisplay})\n`;
+                        }
+                        confirmationMessage += "\n";
+                    }
+                });
+  
+                //convert totalSize to MB
+                const totalSizeMB = (totalSize / (1024 * 1024)).toFixed(2);
+  
+                confirmationMessage = `Total upload size: ${totalSizeMB} MB / 100 MB\n\n${confirmationMessage}`;
+  
+  
+                // If no files were selected, show a message and allow submission
+                if (!hasFiles) {
+                    alert("No files were selected for upload.  Submitting form.");
+                    this.submit(); // Use 'this' to refer to the form
+                    return;
+                }
+  
+                if (totalSize > maxSize) {
+                    alert(`Total upload size (${totalSizeMB} MB) exceeds the limit of 100 MB. Please reduce the number of files.`);
+                    return;
+                }
+  
+                // Show the confirmation dialog
+                const userConfirmed = confirm(confirmationMessage);
+  
+                // If the user confirms, submit the form
+                if (userConfirmed) {
+                    this.submit(); // Use 'this' to refer to the form
+                } else {
+                    alert("File upload cancelled.");
+                    // Optionally, you can reset the form or clear the file inputs here
+                }
+            });
+  // Disable the back button
+history.pushState(null, null, location.href);
+window.onpopstate = function () {
+    history.pushState(null, null, location.href);
+};
+  </script>
+  

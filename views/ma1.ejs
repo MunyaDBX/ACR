@@ -1,0 +1,436 @@
+<%- include('partials/tracker.ejs'); -%>
+
+<div class="broader">
+    <div id="myProgress">
+        <div id="myBar">20%</div>
+      </div>
+</div>
+
+<div class="form-holder">
+    <form action="/submit-ma1" method="post" enctype="multipart/form-data" id="uploadForm">
+        <div class="form-container">
+            <h2>Evaluating Management</h2>
+            <section class="checkbox-section">
+                <div class="form-group">
+                    <label for="management_ownership">1. Does management have more than 10% ownership in the business, collectively or individually?</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <input type="radio" id="ownership_positive" name="management_ownership_question" value="3" required>
+                            <label for="ownership_positive">Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="ownership_negative" name="management_ownership_question" value="-3" required>
+                            <label for="ownership_negative">Negative</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="ownership_na" name="management_ownership_question" value="0" required>
+                            <label for="ownership_na">N/A</label>
+                        </div>
+                    </div>
+                    <textarea id="management_ownership_comment" name="management_ownership_comment" placeholder="Management interest in the business" required></textarea>
+                </div>
+                
+            <div class="form-group">
+                <label for="management_experience">2.  How would you rate management's experience and qualifications for their roles?</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>
+                        <input type="radio" id="experience_positive" name="management_experience_question" value="1" required>
+                        <label for="experience_positive">Positive</label>
+                    </div>
+                     <div>
+                        <input type="radio" id="experience_negative" name="management_experience_question" value="-1" required>
+                        <label for="experience_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="experience_na" name="management_experience_question" value="0" required>
+                        <label for="experience_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="management_experience_comment" name="management_experience_comment" placeholder="Describe specific qualifications, industry experience, and track record." required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="management_orientation">3.  How would you assess management's orientation towards shareholder interests?</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>
+                        <input type="radio" id="orientation_positive" name="management_orientation_question" value="3" required>
+                        <label for="orientation_positive">Positive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="orientation_negative" name="management_orientation_question" value="-3" required>
+                        <label for="orientation_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="orientation_na" name="management_orientation_question" value="0" required>
+                        <label for="orientation_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="management_orientation_comment" name="management_orientation_comment" placeholder="Cite examples from business presentations or communications that demonstrate their orientation." required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="management_candor">4.  How candid is management, and how do they address past mistakes?</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>
+                        <input type="radio" id="candor_positive" name="management_candor_question" value="2" required>
+                        <label for="candor_positive">Positive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="candor_negative" name="management_candor_question" value="-2" required>
+                        <label for="candor_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="candor_na" name="management_candor_question" value="0" required>
+                        <label for="candor_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="management_candor_comment" name="management_candor_comment" placeholder="Describe instances where management acknowledged failures or strategic missteps." required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="capital_allocation">5.  How effective has management been in allocating capital?</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>
+                        <input type="radio" id="allocation_positive" name="capital_allocation_question" value="3" required>
+                        <label for="allocation_positive">Positive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="allocation_negative" name="capital_allocation_question" value="-3" required>
+                        <label for="allocation_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="allocation_na" name="capital_allocation_question" value="0" required>
+                        <label for="allocation_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="capital_allocation_comment" name="capital_allocation_comment" placeholder="Assess decisions regarding investments, acquisitions, dividends, and share buybacks." required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="management_reputation">6.  How would you rate management's overall reputation?</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>
+                        <input type="radio" id="reputation_positive" name="management_reputation_question" value="1" required>
+                        <label for="reputation_positive">Positive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="reputation_negative" name="management_reputation_question" value="-1" required>
+                        <label for="reputation_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="reputation_na" name="management_reputation_question" value="0" required>
+                        <label for="reputation_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="management_reputation_comment" name="management_reputation_comment" placeholder="Consider factors such as ethical conduct, industry standing, and public perception." required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="management_admiration">7.  Do you admire the management, and have their individual decisions generally benefited the business?</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>
+                        <input type="radio" id="admire_positive" name="management_admiration_question" value="1" required>
+                        <label for="admire_positive">Positive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="admire_negative" name="management_admiration_question" value="-1" required>
+                        <label for="admire_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="admire_na" name="management_admiration_question" value="0" required>
+                        <label for="admire_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="management_admiration_comment" name="management_admiration_comment" placeholder="Provide specific examples of decisions that have or have not benefited the business." required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="management_innovation">8.  How determined is management to develop new products or processes for future growth?</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>
+                        <input type="radio" id="innovation_positive" name="management_innovation_question" value="3" required>
+                        <label for="innovation_positive">Positive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="innovation_negative" name="management_innovation_question" value="-3" required>
+                        <label for="innovation_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="innovation_na" name="management_innovation_question" value="0" required>
+                        <label for="innovation_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="management_innovation_comment" name="management_innovation_comment" placeholder="Describe management's track record in innovation and their commitment to future development." required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="management_depth">9.  How would you assess the depth of the company's management team?</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>
+                        <input type="radio" id="depth_positive" name="management_depth_question" value="1" required>
+                        <label for="depth_positive">Positive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="depth_negative" name="management_depth_question" value="-1" required>
+                        <label for="depth_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="depth_na" name="management_depth_question" value="0" required>
+                        <label for="depth_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="management_depth_comment" name="management_depth_comment" placeholder="Evaluate the experience and capabilities of the broader management team beyond the CEO." required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="management_transparency">10. How transparent is management with investors, especially during difficult times?</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>
+                        <input type="radio" id="transparency_positive" name="management_transparency_question" value="1" required>
+                        <label for="transparency_positive">Positive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="transparency_negative" name="management_transparency_question" value="-1" required>
+                        <label for="transparency_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="transparency_na" name="management_transparency_question" value="0" required>
+                        <label for="transparency_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="management_transparency_comment" name="management_transparency_comment" placeholder="Describe how management communicates with investors during both positive and negative periods." required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="ceo_letter_analysis">11.  Analyze the CEO's letter to shareholders in the company’s most profitable year.</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>
+                        <input type="radio" id="ceo_positive" name="ceo_letter_analysis_question" value="1" required>
+                        <label for="ceo_positive">Positive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="ceo_negative" name="ceo_letter_analysis_question" value="-1" required>
+                        <label for="ceo_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="ceo_na" name="ceo_letter_analysis_question" value="0" required>
+                        <label for="ceo_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="ceo_letter_analysis_comment" name="ceo_letter_analysis_comment" placeholder="Summarize the key themes and tone of the letter, and assess whether the CEO's outlook was realistic." required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="executive_compensation_analysis">12.  Analyze executive compensation and potential conflicts of interest.</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>
+                        <input type="radio" id="compensation_positive" name="executive_compensation_analysis_question" value="1" required>
+                        <label for="compensation_positive">Positive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="compensation_negative" name="executive_compensation_analysis_question" value="-1" required>
+                        <label for="compensation_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="compensation_na" name="executive_compensation_analysis_question" value="0" required>
+                        <label for="compensation_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="executive_compensation_analysis_comment" name="executive_compensation_analysis_comment" placeholder="Describe the structure of executive compensation (e.g., stock options, salary, bonuses) and identify any potential concerns, such as unfair perks or related-party transactions.  Refer to proxy statements and disclosures." required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="management_said_analysis">13.  Perform a "What Management Said" analysis for the company over the past 10 years.</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>
+                        <input type="radio" id="said_analysis_positive" name="management_said_analysis_question" value="10" required>
+                        <label for="said_analysis_positive">Positive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="said_analysis_negative" name="management_said_analysis_question" value="-10" required>
+                        <label for="said_analysis_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="said_analysis_na" name="management_said_analysis_question" value="0" required>
+                        <label for="said_analysis_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="management_said_analysis_comment" name="management_said_analysis_comment" placeholder="Provide a table summarizing key management statements and whether they came to fruition. Include years, statements, and outcomes." required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="board_size">14.  Analyze the size and structure of the Board of Directors.</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>
+                        <input type="radio" id="board_size_positive" name="board_size_question" value="1" required>
+                        <label for="board_size_positive">Positive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="board_size_negative" name="board_size_question" value="-1" required>
+                        <label for="board_size_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="board_size_na" name="board_size_question" value="0" required>
+                        <label for="board_size_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="board_size_comment" name="board_size_comment" placeholder="Compare the number of board members to similar-sized companies in the industry.  Assess if the board is properly staggered." required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="board_depth">15.  How would you assess the depth of the Board of Directors?</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>
+                        <input type="radio" id="board_depth_positive" name="board_depth_question" value="1" required>
+                        <label for="board_depth_positive">Positive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="board_depth_negative" name="board_depth_question" value="-1" required>
+                        <label for="board_depth_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="board_depth_na" name="board_depth_question" value="0" required>
+                        <label for="board_depth_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="board_depth_comment" name="board_depth_comment" placeholder="Evaluate the experience, expertise, and diversity of the board members." required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="ceo_compensation">16.  Analyze CEO compensation relative to the rest of the management team and industry peers.</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>
+                        <input type="radio" id="ceo_compensation_positive" name="ceo_compensation_question" value="1" required>
+                        <label for="ceo_compensation_positive">Positive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="ceo_compensation_negative" name="ceo_compensation_question" value="-1" required>
+                        <label for="ceo_compensation_negative">Negative</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="ceo_compensation_na" name="ceo_compensation_question" value="0" required>
+                        <label for="ceo_compensation_na">N/A</label>
+                    </div>
+                </div>
+                <textarea id="ceo_compensation_comment" name="ceo_compensation_comment" placeholder="Compare CEO compensation to that of other executives within the company and CEOs at comparable firms in the same industry." required></textarea>
+            </div>
+            
+                <div class="form-group">
+                    <label for="ma1_documents">Documents:</label>
+  
+                        <input type="file" id="ma1_documents" name="ma1_documents[]" multiple>
+                        
+            </section>
+        </div>
+        <button type="submit" class="btn btn-primary">Save and Move to Next Page</button>
+    </form>
+  </div>
+  
+  <script>
+  // Disable the back button
+history.pushState(null, null, location.href);
+window.onpopstate = function () {
+    history.pushState(null, null, location.href);
+};
+    var i = 0;
+  function move() {
+  if (i === 0) {
+    i = 1;
+    var elem = document.getElementById("myBar");
+    elem.style.width = "0%"; // Ensure initial width is set
+  
+    fetch('/get-progress') // Replace '/get-progress' with your server endpoint
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json(); // Assuming your server sends JSON
+      })
+      .then(data => {
+        var width = data.progress; // Assuming your JSON has a 'progress' property
+        if (width >= 0 && width <= 100) { // Validate the width
+          elem.style.width = width + "%";
+          elem.innerHTML = width + "%";
+        } else {
+          console.error("Invalid progress value from server:", width);
+        }
+      })
+      .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+      });
+  }
+  }
+  
+    // Automatically start the progress bar when the page loads
+    window.onload = function() {
+        move();
+    };
+  
+  //Confirm submission
+  
+  // Add event listener to the form to trigger confirmation
+  document.getElementById('uploadForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+  
+                // Get all file input elements
+                const fileInputs = document.querySelectorAll('input[type="file"]');
+                let confirmationMessage = "Please confirm the files you have selected:\n\n";
+                let totalSize = 0;
+                const maxSize = 100 * 1024 * 1024; // 100MB in bytes
+  
+                let hasFiles = false; // Track if any files were selected
+  
+                // Iterate over each file input
+                fileInputs.forEach(input => {
+                    if (input.files && input.files.length > 0) {
+                        hasFiles = true;
+                        confirmationMessage += `${input.id}:\n`;
+                        for (let i = 0; i < input.files.length; i++) {
+                            const file = input.files[i];
+                            totalSize += file.size;
+                            // Get file size in KB or MB
+                            const fileSizeKB = file.size / 1024; // Size in KB
+                            let fileSizeDisplay;
+                            if (fileSizeKB > 1024) {
+                                fileSizeDisplay = (fileSizeKB / 1024).toFixed(2) + " MB"; // Size in MB
+                            } else {
+                                fileSizeDisplay = fileSizeKB.toFixed(2) + " KB"; // Size in KB
+                            }
+                            confirmationMessage += `  - ${file.name} (${fileSizeDisplay})\n`;
+                        }
+                        confirmationMessage += "\n";
+                    }
+                });
+  
+                //convert totalSize to MB
+                const totalSizeMB = (totalSize / (1024 * 1024)).toFixed(2);
+  
+                confirmationMessage = `Total upload size: ${totalSizeMB} MB / 100 MB\n\n${confirmationMessage}`;
+  
+  
+                // If no files were selected, show a message and allow submission
+                if (!hasFiles) {
+                    alert("No files were selected for upload.  Submitting form.");
+                    this.submit(); // Use 'this' to refer to the form
+                    return;
+                }
+  
+                if (totalSize > maxSize) {
+                    alert(`Total upload size (${totalSizeMB} MB) exceeds the limit of 100 MB. Please reduce the number of files.`);
+                    return;
+                }
+  
+                // Show the confirmation dialog
+                const userConfirmed = confirm(confirmationMessage);
+  
+                // If the user confirms, submit the form
+                if (userConfirmed) {
+                    this.submit(); // Use 'this' to refer to the form
+                } else {
+                    alert("File upload cancelled.");
+                    // Optionally, you can reset the form or clear the file inputs here
+                }
+            });
+  
+  </script>
+  
