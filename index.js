@@ -764,12 +764,12 @@ app.post('/submit-vl2', upload.fields([
                 const Comp = "80";
                 const Score =  score.toString();// Convert the score to a string score.toString();
                 const Status = "Decision";
-                const maxScore = 211
+                const maxScore = "16";
                 
 
                 const updateCompanyQuery = `
                 UPDATE companyinfo
-                SET c_creator = $1, c_datem = $2, c_comp = $3, c_score = c_score + $4, c_status = $5, maximum_score = $6
+                SET c_creator = $1, c_datem = $2, c_comp = $3, c_score = c_score + $4, c_status = $5, maximum_score = maximum_score + $6
                 WHERE
                 c_id = (SELECT c_id FROM companyinfo ORDER BY c_datem DESC LIMIT 1);
               `;
@@ -980,12 +980,12 @@ const questionValues = {
                 const Comp = "70";
                 const Score =  score.toString();// Convert the score to a string score.toString();
                 const Status = "Assessment";
-                const maxScore = 195
+                const maxScore = 25;
                 
 
                 const updateCompanyQuery = `
                 UPDATE companyinfo
-                SET c_creator = $1, c_datem = $2, c_comp = $3, c_score = c_score + $4, c_status = $5, maximum_score = $6
+                SET c_creator = $1, c_datem = $2, c_comp = $3, c_score = c_score + $4, c_status = $5, maximum_score = maximum_score + $6
                 WHERE
                 c_id = (SELECT c_id FROM companyinfo ORDER BY c_datem DESC LIMIT 1);
               `;
@@ -1026,7 +1026,7 @@ const questionValues = {
           console.log(percentage)
     
           res.render("vl2.ejs", { company: lastInserted.rows[0], score: percentage});
-});
+}); 
 
 app.post('/submit-utf2', upload.fields([
   { name: 'utf2_documents[]', maxCount: 100 },
@@ -1178,12 +1178,12 @@ app.post('/submit-utf2', upload.fields([
                 const Comp = "57";
                 const Score =  score.toString();// Convert the score to a string score.toString();
                 const Status = "Assessment";
-                const maxScore = 170
+                const maxScore = 23
                 
 
                 const updateCompanyQuery = `
                 UPDATE companyinfo
-                SET c_creator = $1, c_datem = $2, c_comp = $3, c_score = c_score + $4, c_status = $5, maximum_score = $6
+                SET c_creator = $1, c_datem = $2, c_comp = $3, c_score = c_score + $4, c_status = $5, maximum_score = maximum_score + $6
                 WHERE
                 c_id = (SELECT c_id FROM companyinfo ORDER BY c_datem DESC LIMIT 1);
               `;
@@ -1395,12 +1395,12 @@ const questionValues = {
                 const Comp = "50";
                 const Score =  score.toString();// Convert the score to a string score.toString();
                 const Status = "Assessment";
-                const maxScore = 147
+                const maxScore = 31
                 
 
                 const updateCompanyQuery = `
                 UPDATE companyinfo
-                SET c_creator = $1, c_datem = $2, c_comp = $3, c_score = c_score + $4, c_status = $5, maximum_score = $6
+                SET c_creator = $1, c_datem = $2, c_comp = $3, c_score = c_score + $4, c_status = $5, maximum_score = maximum_score + $6
                 WHERE
                 c_id = (SELECT c_id FROM companyinfo ORDER BY c_datem DESC LIMIT 1);
               `;
@@ -1614,12 +1614,12 @@ const questionValues = {
                 const Comp = "43";
                 const Score =  score.toString();// Convert the score to a string score.toString();
                 const Status = "Assessment";
-                const maxScore = 116
+                const maxScore = 34
                 
 
                 const updateCompanyQuery = `
                 UPDATE companyinfo
-                SET c_creator = $1, c_datem = $2, c_comp = $3, c_score = c_score + $4, c_status = $5, maximum_score = $6
+                SET c_creator = $1, c_datem = $2, c_comp = $3, c_score = c_score + $4, c_status = $5, maximum_score = maximum_score + $6
                 WHERE
                 c_id = (SELECT c_id FROM companyinfo ORDER BY c_datem DESC LIMIT 1);
               `;
@@ -1800,12 +1800,12 @@ const questionValues = {
                 const Comp = "35";
                 const Score =  score.toString();// Convert the score to a string score.toString();
                 const Status = "Assessment";
-                const maxScore = 82
+                const maxScore = 15
                 
 
                 const updateCompanyQuery = `
                 UPDATE companyinfo
-                SET c_creator = $1, c_datem = $2, c_comp = $3, c_score = c_score + $4, c_status = $5, maximum_score = $6
+                SET c_creator = $1, c_datem = $2, c_comp = $3, c_score = c_score + $4, c_status = $5, maximum_score = maximum_score + $6
                 WHERE
                 c_id = (SELECT c_id FROM companyinfo ORDER BY c_datem DESC LIMIT 1);
               `;
@@ -2066,11 +2066,11 @@ app.post('/submit-utb1', upload.fields([
                 const Comp = "30";
                 const Score =  score.toString();;// Convert the score to a string score.toString();
                 const Status = "Assessment";
-                const maxScore = 67
+                const maxScore = "42";
 
                 const updateCompanyQuery = `
                 UPDATE companyinfo
-                SET c_creator = $1, c_datem = $2, c_comp = $3, c_score = c_score + $4, c_status = $5, maximum_score = $6
+                SET c_creator = $1, c_datem = $2, c_comp = $3, c_score = c_score + $4, c_status = $5, maximum_score = maximum_score + $6
                 WHERE
                 c_id = (SELECT c_id FROM companyinfo ORDER BY c_datem DESC LIMIT 1);
               `;
@@ -2408,7 +2408,6 @@ app.post('/submit', upload.fields([
                   const Status = "Assessment";
                   const maxScore = 25
        
-
                   const updateCompanyQuery = `
                   UPDATE companyinfo
                   SET c_creator = $1, c_datem = $2, c_comp = $3, c_score = $4, c_status = $5, maximum_score = $6
@@ -2417,10 +2416,6 @@ app.post('/submit', upload.fields([
                 `;
                 const updateValues = [Creator, DateM, Comp, Score, Status, maxScore];
                 await db.query(updateCompanyQuery, updateValues);
-
-              
-
-
 
       } catch (dbError) {
           console.error("Database error:", dbError);
@@ -2554,55 +2549,64 @@ app.post('/continue', async (req, res) => {
           `SELECT * FROM companyinfo WHERE c_id = $1`, [companyId]);
         // Render the tracker.ejs template with the data
         const currentscore = await db.query(`SELECT c_score FROM companyinfo WHERE c_id = $1`, [companyId]);
-        const currentScoreInt = parseInt(currentscore.rows[0].c_score, 10);
+        const maximum_score = await db.query(`SELECT maximum_score FROM companyinfo WHERE c_id = $1`, [companyId]);
+        const currentScoreInt = parseInt(currentscore.rows[0].c_score, 10) / parseInt(maximum_score.rows[0].maximum_score, 10) * 100; 
         res.render("background.ejs", { company: lastInserted.rows[0], score: currentScoreInt });
-      } else if (c_comp > 10 && c_comp < 23) {
+      } else if (c_comp > 10 && c_comp <= 23) {
         const lastInserted = await db.query(
           `SELECT * FROM companyinfo WHERE c_id = $1`, [companyId]);
           const currentscore = await db.query(`SELECT c_score FROM companyinfo WHERE c_id = $1`, [companyId]);
-          const currentScoreInt = parseInt(currentscore.rows[0].c_score, 10);
+          const maximum_score = await db.query(`SELECT maximum_score FROM companyinfo WHERE c_id = $1`, [companyId]);
+          const currentScoreInt = parseInt(currentscore.rows[0].c_score, 10) / parseInt(maximum_score.rows[0].maximum_score, 10) * 100; 
           res.render("utb1.ejs", { company: lastInserted.rows[0], score: currentScoreInt });
-      } else if (c_comp >= 23 && c_comp < 30) {
+      } else if (c_comp > 23 && c_comp <= 30) {
         const lastInserted = await db.query(
           `SELECT * FROM companyinfo WHERE c_id = $1`, [companyId]);
           const currentscore = await db.query(`SELECT c_score FROM companyinfo WHERE c_id = $1`, [companyId]);
-          const currentScoreInt = parseInt(currentscore.rows[0].c_score, 10);
+          const maximum_score = await db.query(`SELECT maximum_score FROM companyinfo WHERE c_id = $1`, [companyId]);
+          const currentScoreInt = parseInt(currentscore.rows[0].c_score, 10) / parseInt(maximum_score.rows[0].maximum_score, 10) * 100; 
           res.render("utb2.ejs", { company: lastInserted.rows[0], score: currentScoreInt });
-      } else if (c_comp >= 30 && c_comp < 35) {
+      } else if (c_comp > 30 && c_comp <= 35) {
         const lastInserted = await db.query(
           `SELECT * FROM companyinfo WHERE c_id = $1`, [companyId]);
           const currentscore = await db.query(`SELECT c_score FROM companyinfo WHERE c_id = $1`, [companyId]);
-          const currentScoreInt = parseInt(currentscore.rows[0].c_score, 10);
+          const maximum_score = await db.query(`SELECT maximum_score FROM companyinfo WHERE c_id = $1`, [companyId]);
+          const currentScoreInt = parseInt(currentscore.rows[0].c_score, 10) / parseInt(maximum_score.rows[0].maximum_score, 10) * 100; 
           res.render("ma1.ejs", { company: lastInserted.rows[0], score: currentScoreInt });
       } else if (c_comp >= 35 && c_comp < 50) {
         const lastInserted = await db.query(
           `SELECT * FROM companyinfo WHERE c_id = $1`, [companyId]);
           const currentscore = await db.query(`SELECT c_score FROM companyinfo WHERE c_id = $1`, [companyId]);
-          const currentScoreInt = parseInt(currentscore.rows[0].c_score, 10);
+          const maximum_score = await db.query(`SELECT maximum_score FROM companyinfo WHERE c_id = $1`, [companyId]);
+          const currentScoreInt = parseInt(currentscore.rows[0].c_score, 10) / parseInt(maximum_score.rows[0].maximum_score, 10) * 100; 
           res.render("utf2.ejs", { company: lastInserted.rows[0], score: currentScoreInt });
       } else if (c_comp >= 50 && c_comp < 57) {
         const lastInserted = await db.query(
           `SELECT * FROM companyinfo WHERE c_id = $1`, [companyId]);
           const currentscore = await db.query(`SELECT c_score FROM companyinfo WHERE c_id = $1`, [companyId]);
-          const currentScoreInt = parseInt(currentscore.rows[0].c_score, 10);
+          const maximum_score = await db.query(`SELECT maximum_score FROM companyinfo WHERE c_id = $1`, [companyId]);
+          const currentScoreInt = parseInt(currentscore.rows[0].c_score, 10) / parseInt(maximum_score.rows[0].maximum_score, 10) * 100; 
           res.render("utf2.ejs", { company: lastInserted.rows[0], score: currentScoreInt });
       } else if (c_comp >= 57 && c_comp < 70) {
         const lastInserted = await db.query(
           `SELECT * FROM companyinfo WHERE c_id = $1`, [companyId]);
           const currentscore = await db.query(`SELECT c_score FROM companyinfo WHERE c_id = $1`, [companyId]);
-          const currentScoreInt = parseInt(currentscore.rows[0].c_score, 10);
+          const maximum_score = await db.query(`SELECT maximum_score FROM companyinfo WHERE c_id = $1`, [companyId]);
+          const currentScoreInt = parseInt(currentscore.rows[0].c_score, 10) / parseInt(maximum_score.rows[0].maximum_score, 10) * 100; 
           res.render("vl1.ejs", { company: lastInserted.rows[0], score: currentScoreInt });
       } else if (c_comp >= 70 && c_comp < 80) {
         const lastInserted = await db.query(
           `SELECT * FROM companyinfo WHERE c_id = $1`, [companyId]);
           const currentscore = await db.query(`SELECT c_score FROM companyinfo WHERE c_id = $1`, [companyId]);
-          const currentScoreInt = parseInt(currentscore.rows[0].c_score, 10);
+          const maximum_score = await db.query(`SELECT maximum_score FROM companyinfo WHERE c_id = $1`, [companyId]);
+          const currentScoreInt = parseInt(currentscore.rows[0].c_score, 10) / parseInt(maximum_score.rows[0].maximum_score, 10) * 100; 
           res.render("vl2.ejs", { company: lastInserted.rows[0], score: currentScoreInt });
       } else if (c_comp >= 80 && c_comp < 100) {
         const lastInserted = await db.query(
           `SELECT * FROM companyinfo WHERE c_id = $1`, [companyId]);
           const currentscore = await db.query(`SELECT c_score FROM companyinfo WHERE c_id = $1`, [companyId]);
-          const currentScoreInt = parseInt(currentscore.rows[0].c_score, 10);
+          const maximum_score = await db.query(`SELECT maximum_score FROM companyinfo WHERE c_id = $1`, [companyId]);
+          const currentScoreInt = parseInt(currentscore.rows[0].c_score, 10) / parseInt(maximum_score.rows[0].maximum_score, 10) * 100; 
           res.render("final.ejs", { company: lastInserted.rows[0], score: currentScoreInt });
       } else if (c_comp > 100) {
         res.redirect('/final.ejs'); // change to review and edit page
@@ -2620,7 +2624,7 @@ app.post('/continue', async (req, res) => {
 
 
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+  console.log(`Server running aokay on port ${port}`);
 });
 
 

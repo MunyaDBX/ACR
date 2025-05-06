@@ -352,9 +352,5 @@ document.getElementById('uploadForm').addEventListener('submit', function(event)
                   // Optionally, you can reset the form or clear the file inputs here
               }
           });
-// Disable the back button
-history.pushState(null, null, location.href);
-window.onpopstate = function () {
-    history.pushState(null, null, location.href);
-};
+
 </script>

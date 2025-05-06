@@ -57,7 +57,7 @@
               <% } %>
             </td>
             <td class="center"><%= company.c_comp %>%</td>
-            <td class="center"><%= company.c_score %>%</td>
+            <td class="center"><%= ((company.c_score / company.maximum_score) * 100).toFixed(0) %>%</td>
             <td class="center statusValue"><%= company.c_status %></td>
           </tr>
         <% }); %>

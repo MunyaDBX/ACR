@@ -163,11 +163,7 @@
 
 <script>
 
-    // Disable the back button
-history.pushState(null, null, location.href);
-window.onpopstate = function () {
-    history.pushState(null, null, location.href);
-};
+
     // Validate the website URL format
     document.getElementById('website').addEventListener('blur', function(event) {
         const websiteInput = event.target;
