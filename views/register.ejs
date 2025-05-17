@@ -1,0 +1,141 @@
+<%- include('partials/header') %>
+<style>
+  nav {
+    display: none;
+  }
+</style>
+
+<style>
+  body {
+    font-family: 'Google Sans', sans-serif; /* Use Google's primary font */
+    background-color: #fff; /* Clean white background */
+    color: #202124; /* Dark grey text, Google's primary text color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 40px;
+    width: 400px; /* Adjust width as needed */
+    text-align: center;
+  }
+
+  h1 {
+    color: #00bf63; /* Google Blue */
+    margin-bottom: 30px;
+    font-weight: 500; /* Medium font weight */
+    font-size: 24px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #5f6368; /* Google grey for labels */
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #dadce0; /* Light grey border */
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+    outline: none;
+  }
+
+  .form-control:focus {
+    border-color: #00bf63; /* Google Blue on focus */
+    box-shadow: 0 1px 3px rgba(66, 133, 244, 0.3); /* Subtle blue shadow on focus */
+  }
+
+  .btn-primary {
+    background-color: #00bf63; /* Google Blue */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: white; /* Darker shade of Google Blue on hover */
+    border: 1px solid #00bf63; /* Google Blue border on hover */
+  }
+
+  .card {
+    border: none;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .card-body {
+    padding: 0;
+  }
+
+
+</style>
+
+<div class="container">
+  
+  <h1>Register</h1>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <form action="/register" method="POST">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" name="username" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" name="password" placeholder="Create a password">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Optional: Add Google Sans font if not already included in your header
+  if (!document.querySelector('link[href*="fonts.googleapis.com"]')) {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&display=swap';
+    document.head.appendChild(link);
+  }
+</script>
+
+    <!-- <div class="col-sm-4">
+      <div class="card social-block">
+        <div class="card-body">
+          <a class="btn btn-block" href="/auth/google" role="button">
+            <i class="fab fa-google"></i>
+            Sign Up with Google
+          </a>
+        </div>
+      </div>
+    </div> -->
+
+  </div>
+</div>
+

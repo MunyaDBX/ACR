@@ -395,6 +395,19 @@ th {
   color: #00bf63;
   text-align: left; 
 }
+
+.centered {
+  padding-top: 200px;
+  text-align: center;
+}
+
+.secret-text {
+text-align: center;
+font-size: 2rem;
+color: #fff;
+background-color: #00bf63;
+}
+
 .center {
   text-align: center;
 }

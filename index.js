@@ -3,10 +3,23 @@ import bodyParser from "body-parser";
 import pg from "pg";
 import multer from 'multer';
 import path from 'path';
+import bcrypt from "bcrypt";
+import session from "express-session";
+import passport from "passport";
+import { Strategy } from "passport-local";
+import env from "dotenv";
+
 
 const app = express();
 const port = 3000;
+const saltRounds = 10;
+env.config();
 
+const sessionSecret = process.env.SESSION_SECRET;
+const pgUser = process.env.PG_USER;
+const pgHost = process.env.PG_HOST;
+const pgDatabase = process.env.PG_DATABASE;
+const pgPort = process.env.PG_PORT;
 
 const countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo (Congo-Brazzaville)", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czechia (Czech Republic)", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini (fmr. Swaziland)", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Holy See", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea (North)", "Korea (South)", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar (formerly Burma)", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia (formerly Macedonia)", "Norway", "Oman", "Pakistan", "Palau", "Palestine State", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City (Holy See)", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"];
 
@@ -165,17 +178,25 @@ const currencies = [
 
 
 const db = new pg.Client({
-  user: "postgres",
-  host: "localhost",
-  database: "Allanite ACR",
-  password: "Muny@r@dzi99",
-  port: 5432,
+  user: pgUser,
+  host: pgHost,
+  database: pgDatabase,
+  password: process.env.PG_PASSWORD,
+  port: pgPort,
 });
 db.connect();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+app.use(session({
+  secret: sessionSecret,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { maxAge: 60000 } // Set cookie expiration time (in milliseconds)
+}));
 
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 //const upload = multer({ dest: 'uploads/' }); //  use this if you are not renaming
@@ -2452,12 +2473,141 @@ app.post('/submit', upload.fields([
       res.render("utb1.ejs", { company: lastInserted.rows[0], score: percentage});
 });
 
-app.get("/", async (req, res) => {
+app.get("/", (req, res) => {
+  res.render("home.ejs");
+});
+
+app.get("/login", (req, res) => {
+  res.render("login.ejs");
+});
+
+app.get("/register", (req, res) => {
+  res.render("register.ejs");
+});
+
+app.post("/register", async (req, res) => {
+  const email = req.body.username;
+  const password = req.body.password;
+
+  try {
+    const checkResult = await db.query("SELECT * FROM users WHERE email = $1", [
+      email,
+    ]);
+
+    if (checkResult.rows.length > 0) {
+      res.send("Email already exists. Try logging in.");
+    } else {
+      //hashing the password and saving it in the database
+      bcrypt.hash(password, saltRounds, async (err, hash) => {
+        if (err) {
+          console.error("Error hashing password:", err);
+        } else {
+          
+          const result = await db.query(
+            "INSERT INTO users (email, password) VALUES ($1, $2) RETURNING *",
+            [email, hash]
+          );
+          const user = result.rows[0];
+          req.login(user, (err) => {
+            if (err) {
+              console.error("Error logging in after registration:", err);
+              res.send("Error logging in after registration");
+            } else {
+              res.render("login.ejs");
+    
+            }
+          }
+          );
+        }
+      });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+passport.use(new Strategy(async function (username, password, cb) {
+  const email = username;
+  const loginPassword = password;
+
+  try {
+    const result = await db.query("SELECT * FROM users WHERE email = $1", [
+      email,
+    ]);
+    if (result.rows.length > 0) {
+      const user = result.rows[0];
+      const storedHashedPassword = user.password;
+      bcrypt.compare(loginPassword, storedHashedPassword, (err, result) => {
+        if (err) {
+          return
+        } else {
+          if (result) {
+            return cb(null, user);
+          } else {
+            return cb(null, false, { message: "Incorrect Password" });
+          }
+        }
+      });
+    } else {
+      return cb(null, false, { message: "User not found" });
+    }
+  } catch (err) {
+    return cb(err);
+  }
+
+}));
+
+passport.serializeUser(function (user, cb) {
+  cb(null, user.id);
+}
+);
+
+passport.deserializeUser(async function (id, cb) {
+  try {
+    const result = await db.query("SELECT * FROM users WHERE id = $1", [id]);
+    if (result.rows.length > 0) {
+      cb(null, result.rows[0]);
+    } else {
+      cb(new Error("User not found"));
+    }
+  } catch (err) {
+    cb(err);
+  }
+}
+);
+
+app.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/center",
+    failureRedirect: "/login",
+  })
+);
+
+app.get("/logout", (req, res) => {
+  req.logout((err) => {
+    if (err) {
+      console.error("Error logging out:", err);
+    } else {
+      res.redirect("/");
+    }
+  });
+}
+);
+
+app.get("/center", async (req, res) => {
+  if (req.isAuthenticated()) {
     const allCompaniesOrdered = await db.query(
       `SELECT * FROM companyinfo ORDER BY c_datem DESC`
     );
-    res.render("index.ejs", { companies: allCompaniesOrdered.rows });    
-});
+    res.render("index.ejs", { companies: allCompaniesOrdered.rows });  
+  }
+  else {
+    res.redirect("/login");
+  }
+}
+);
+
 
 app.post("/add", async (req, res) => {
     res.render("new.ejs", { countries, currencies });
@@ -2626,6 +2776,5 @@ app.post('/continue', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server running aokay on port ${port}`);
 });
-
 
 

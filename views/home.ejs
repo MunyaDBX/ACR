@@ -1,0 +1,88 @@
+<%- include('partials/header') %>
+<style>
+  nav {
+    display: none;
+  }
+</style>
+
+<div class="jumbotron centered">
+  <div class="container">
+    <i class="fas fa-key"></i>
+    <h1>Allanite Research Center</h1>
+    <p>Welcome to our research portal</p>
+    <hr>
+    <div class="button-group">
+      <a href="/register" role="button" class="btn-register">Register</a>
+      <a href="/login" role="button" class="btn-login">Login</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+  }
+
+  .jumbotron {
+    background-color: #00bf63;
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+
+  .jumbotron h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .jumbotron p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .jumbotron .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .btn-register,
+  .btn-login {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    color: #00bf63;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-register {
+    background-color: white;
+  }
+
+  .btn-register:hover {
+    background-color: white;
+  }
+
+  .btn-login {
+    background-color: white;
+  }
+
+  .btn-login:hover {
+    background-color: white;
+  }
+
+  hr {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 1.5rem 0;
+  }
+</style>
+
+<%- include('partials/footer') %>
