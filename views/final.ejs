@@ -562,6 +562,92 @@
         <form action="/" method="GET">
             <button type="submit" class="btn btn-secondary">Later</button>
             <span class="tooltiptext">Add to Watchlist:  Save this stock for later review if the stock does not satisfy our requirements as yet.</span>
+         <button type="button" class="btn btn-secondary" id="saveDraftBtn" style="margin-left:10px;">Save as Draft</button>
+        <span id="saveDraftStatus" style="margin-left:10px; color:green;"></span>
+        <script>
+            // Get or generate a session code for this user/session
+            function getSessionCode() {
+            let code = sessionStorage.getItem('final_session_code');
+            if (!code) {
+                code = 'final_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
+                sessionStorage.setItem('final_session_code', code);
+            }
+            return code;
+            }
+
+            // Generate a unique draft key using the session code
+            function getDraftKey() {
+            return getSessionCode();
+            }
+
+            // Collect all form data except files
+            function collectFormData() {
+            const form = document.getElementById('uploadForm');
+            const formData = {};
+            // Get all inputs, textareas, radios
+            form.querySelectorAll('input, textarea').forEach(el => {
+                if (el.type === 'radio') {
+                if (el.checked) {
+                    formData[el.name] = el.value;
+                }
+                } else if (el.type !== 'file') {
+                formData[el.name] = el.value;
+                }
+            });
+            return formData;
+            }
+
+            // Save form data to localStorage
+            function saveDraftForm() {
+            const data = collectFormData();
+            const key = getDraftKey();
+            localStorage.setItem(key, JSON.stringify(data));
+            document.getElementById('saveDraftStatus').textContent = "Draft saved!";
+            setTimeout(() => {
+                document.getElementById('saveDraftStatus').textContent = "";
+            }, 2000);
+            }
+
+            // Restore form data from localStorage (restores the draft for this session)
+            function restoreDraft() {
+            const key = getDraftKey();
+            const saved = localStorage.getItem(key);
+            if (!saved) return;
+            const data = JSON.parse(saved);
+            Object.keys(data).forEach(name => {
+                const el = document.getElementsByName(name);
+                if (el.length) {
+                if (el[0].type === 'radio') {
+                    el.forEach(radio => {
+                    radio.checked = (radio.value === data[name]);
+                    });
+                } else {
+                    el[0].value = data[name];
+                }
+                }
+            });
+            }
+
+            // Delete draft from localStorage
+            function deleteDraft() {
+            const key = getDraftKey();
+            localStorage.removeItem(key);
+            }
+
+            // Save draft every 30 seconds
+            setInterval(saveDraftForm, 30000);
+
+            // Manual save draft button
+            document.getElementById('saveDraftBtn').addEventListener('click', saveDraftForm);
+
+            // Restore on page load
+            window.addEventListener('DOMContentLoaded', restoreDraft);
+
+            // Delete draft on form submit
+            document.getElementById('uploadForm').addEventListener('submit', function() {
+            deleteDraft();
+            });
+        </script>
         </form>
     </div>
   </div>
